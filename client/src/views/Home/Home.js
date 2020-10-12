@@ -1,22 +1,16 @@
 import React from 'react';
 import logo from '../../assets/logo.svg';
+import SplashSearch from '../../components/SplashSearch/SplashSearch.js';
 import './Home.css';
 
 function Home() {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
+                <SplashSearch></SplashSearch>
                 <p>
-                    Edit <code>src/App.js</code> and save to reload.
+                    Todo! Add top comment / featured
                 </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                </a>
             </header>
         </div>
     );

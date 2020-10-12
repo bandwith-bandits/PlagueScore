@@ -1,5 +1,5 @@
 .header {
-    background: #282c34;
+    background: #ffffff;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -11,22 +11,26 @@
     height: 50px;
     width: 50px;
     padding: 10%;
+    position: relative;
+    transition: left 0.4s;
 }
 
 .nav-logo:hover {
-
+    left: 20px;
 }
 
 .nav-items {
     display:flex;
-    margin-left: auto;
-    margin-right: 5%;
+    margin-left: 60%;
     align-items: center;
+    justify-content: space-evenly;
+    width: 40%;
 }
 
 .nav-link {
-    background-color: #09d3ac;
+    background-color: #6ee9f1;
     color: black;
+    transition: background-color 0.5s;
     padding: 14px 25px;
     text-align: center;
     text-decoration: none;
