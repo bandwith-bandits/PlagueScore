@@ -1,3 +1,4 @@
+/* This is styling for general items so they look better than default */
 button {
     border-radius: 3px;
     border-style: solid;
@@ -16,8 +17,22 @@ input {
 input:focus {
     /* can't get rid of weird changes on focus this is attempt to stop */
     outline: none;
-    border-radius: 6px;
-    border-color: rgb(159, 208, 236);
-    border-style: solid;
-    background-color: rgb(233, 241, 232);
+}
+
+/* This is styling for large areas of the page */
+/* This makes it easier to change styling choices */
+/* like font, color, and background */
+
+.header {
+    background: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1%;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
