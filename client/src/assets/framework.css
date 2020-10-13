@@ -1,4 +1,7 @@
 /* This is styling for general items so they look better than default */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nanum Gothic', Arial, Sans;
+}
 button {
     border-radius: 3px;
     border-style: solid;
@@ -12,6 +15,7 @@ input {
     border-radius: 6px;
     border-color: rgb(159, 208, 236);
     border-style: solid;
+    font-family: 'Montserrat';
 }
 
 input:focus {
@@ -22,15 +26,9 @@ input:focus {
 /* This is styling for large areas of the page */
 /* This makes it easier to change styling choices */
 /* like font, color, and background */
-
-.header {
-    background: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 1%;
+body {
+    overflow-x: hidden;
 }
-
 footer {
     display: flex;
     flex-direction: column;

@@ -6,9 +6,9 @@ import './NavBar.css';
 const NavBar = () => {
     return (
         <div>
-            <nav className = "header">
+            <nav className = "navbar">
                 {/* Logo */}
-                <Link className = "nav-title" to="/">
+                <Link className = "nav-title" to="/Home">
                     <img className = "nav-logo" src={Logo} alt="React logo" />
                 </Link>
 

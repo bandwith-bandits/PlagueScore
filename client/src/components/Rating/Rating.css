@@ -1,0 +1,12 @@
+.checked {
+    color: rgb(247, 224, 22);
+}
+.rating-explanation {
+    display: inline-block;
+    text-align: left;
+    width: 100px;
+}
+.icon {
+    width: 1.2rem;
+    padding: 0.05rem;
+}

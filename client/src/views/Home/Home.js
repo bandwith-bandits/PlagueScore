@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/logo.svg';
+import Review from '../../components/Review/Review.js';
 import SplashSearch from '../../components/SplashSearch/SplashSearch.js';
 import './Home.css';
 
@@ -8,10 +8,9 @@ function Home() {
         <div className="App">
             <header className="App-header">
                 <SplashSearch></SplashSearch>
-                <p>
-                    Todo! Add top comment / featured
-                </p>
             </header>
+            <h3>Top Comment</h3>
+            <Review title="Great review!" content="This is the review" />
         </div>
     );
 }

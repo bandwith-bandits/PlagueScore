@@ -4,16 +4,11 @@
     width: 50px;
     padding: 10%;
     position: relative;
-    transition: left 0.4s;
-}
-
-.nav-logo:hover {
-    left: 20px;
 }
 
 .nav-items {
     display:flex;
-    margin-left: 60%;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
     width: 40%;
@@ -21,9 +16,10 @@
 
 .nav-link {
     background-color: #6ee9f1;
-    color: black;
+    color: rgb(250, 250, 250);
     transition: background-color 0.5s;
-    padding: 14px 25px;
+    padding: 10px;
+    border-radius: 2px;
     text-align: center;
     text-decoration: none;
 }
@@ -32,3 +28,16 @@
     background-color: #08bd9a;
 }
 
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1%;
+    width: 100%;
+}
+
+input {
+    height: 38px;
+    font-size: 1.2rem;
+}
