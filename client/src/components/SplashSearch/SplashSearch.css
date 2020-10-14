@@ -7,12 +7,13 @@
 }
 
 .splash > h1 {
-    color: black;
+    background-color: rgba(17, 136, 151, 0.705);
+    color: rgb(255, 255, 255);
     font-size: 3.6em;
     text-shadow: 0px 0px 6px white;
-    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-fill-color: rgb(255, 255, 255); /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
     padding: 50px;
 }
 

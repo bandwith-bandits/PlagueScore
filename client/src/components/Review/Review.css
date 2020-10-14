@@ -1,19 +1,21 @@
 .review {
-    display: flex;
     max-width: 800px;
     margin: 15px;
+
     box-shadow: rgb(231, 231, 231) 0 0 6px;
     border-radius: 2px;
+    border: 0.5px solid rgb(102, 102, 102);
+
     font-size: 1.2em;
-    background-color: rgb(245, 234, 219);
+    background-color: rgb(255, 252, 248);
 }
 .review-title {
     font: bold 1.2em 'Montserrat';
 }
+.review-user {
+    width: 100%;
+}
 .review > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 10px;
+    text-align: left;
 }

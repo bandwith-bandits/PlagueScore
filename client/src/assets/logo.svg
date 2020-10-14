@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.959798"
+     inkscape:zoom="7.919596"
      inkscape:cx="4.657549"
-     inkscape:cy="-27.483621"
+     inkscape:cy="5.7251437"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -52,37 +52,32 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <path
+       id="path845"
+       style="opacity:0.86;fill:#000000;stroke-width:6.15407"
+       d="M 7.4663657e-8,11.75986 H 12.695301 v 0.935444 H 7.4663657e-8 Z" />
+    <path
+       id="path847"
+       style="opacity:0.86;fill:#000000;stroke-width:5.827"
+       d="M 11.759858,0.04110795 H 12.6953 V 12.695303 h -0.935442 z" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:5.35213px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.133804"
-       x="1.0446416"
-       y="10.794678"
+       x="0.51010257"
+       y="10.594226"
        id="text12"><tspan
          sodipodi:role="line"
          id="tspan10"
-         x="1.0446416"
-         y="10.794678"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.8452px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.133804">PR</tspan></text>
-    <rect
-       style="opacity:0.86;fill:#ffaaaa;fill-opacity:1;stroke:none;stroke-width:1.2126"
-       id="rect14"
-       width="12.750865"
-       height="3.532023"
-       x="0.041927319"
-       y="7.9062052" />
-    <rect
-       style="opacity:0.86;fill:#eeffaa;fill-opacity:1;stroke:none;stroke-width:1.2126"
-       id="rect839"
-       width="12.750865"
-       height="3.532023"
-       x="0.041928891"
-       y="4.3741779" />
-    <rect
-       style="opacity:0.86;fill:#aaffee;fill-opacity:1;stroke:none;stroke-width:1.2126"
-       id="rect845"
-       width="12.750865"
-       height="3.532023"
-       x="0.041931901"
-       y="0.84215766" />
+         x="0.51010257"
+         y="10.594226"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.8452px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.133804">PS</tspan></text>
+    <path
+       id="rect835"
+       style="opacity:1;fill:#31d3ff;stroke-width:6.05612;fill-opacity:1"
+       d="M 0.03340862,11.392364 H 12.327806 v 0.935444 H 0.03340862 Z" />
+    <path
+       id="rect837"
+       style="opacity:1;fill:#31d3ff;fill-opacity:1;stroke-width:5.75136"
+       d="m 11.392364,9.5488789e-7 h 0.935442 V 12.327808 h -0.935442 z" />
   </g>
 </svg>

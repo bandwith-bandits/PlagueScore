@@ -10,8 +10,8 @@ function Home() {
                 <SplashSearch></SplashSearch>
             </header>
             <h3>Top Comment</h3>
-            <Review title="Great review!" content="This is the review" />
-            <Review title="Great review!" content="This is the review" />
+            <Review title="Great review!" content="This is the review" user="Stefan" />
+            <Review title="Another Review" content="I wrote a review because I care." user="Diana" />
         </div>
     );
 }
