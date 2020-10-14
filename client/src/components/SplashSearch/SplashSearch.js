@@ -6,7 +6,7 @@ import './SplashSearch.css';
 const SplashSearch = function() {
     return (
     <div class="splash">
-        <h1>Plague Rank</h1>
+        <h1>Plague Score</h1>
         <div class="btn search-bar">
             <input type="search"></input>
             <button>Search!</button>
