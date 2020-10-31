@@ -1,0 +1,8 @@
+{
+    "bussiness_id": "1910482359682659",
+    "places_id": "38945798379857",
+    "BusinessName": "name",
+    "BusinessInformation": "about the business",
+    "images": ["image1", "image2"],
+    "totalReview": 4.32
+}
