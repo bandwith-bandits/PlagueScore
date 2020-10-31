@@ -1,18 +1,27 @@
 import React from 'react';
+import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/framework.css'
 import './SplashSearch.css';
 
-const SplashSearch = function() {
+let SplashSearch = (props) => {
+    const searchStart = "/search?q=";
+    const [search, setSearch] = useState(searchStart);
     return (
     <div className="splash">
         <h1>Plague Score</h1>
-        <div className="btn search-bar">
-            <input type="search"></input>
-            <button>Search!</button>
-        </div>
+        <form>
+            <input onChange={(e) => setSearch(e.target.value)} type="search" ></input>
+            <Link to={searchStart+search}>
+                <button className="button">Search!</button>
+            </Link>
+        </form>
     </div>
     );
+}
+
+function searchTo(search) {
+
 }
 
 export default SplashSearch;

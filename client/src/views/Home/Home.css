@@ -2,7 +2,7 @@ body {
     margin: 0;
 }
 
-.App {
+.landing {
     text-align: center;
     background: #ffffff;
     display: flex;
@@ -10,16 +10,16 @@ body {
     flex-direction: column;
 }
 
-.App-logo {
+.landing-logo {
     height: 40vmin;
 }
 
-.App-header {
+.landing-header {
     background-color: #ffffff;
     min-height: 80vh;
     font-size: calc(10px + 2vmin);
 }
 
-.App-link {
+.landing-link {
     color: #09d3ac;
 }

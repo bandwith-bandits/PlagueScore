@@ -5,7 +5,6 @@ const Rating = function(props) {
     const iconClass = base + props.iconClass;
     return(
         <div>
-            <span className="rating-explanation">{props.explanation}</span>
             <div className={iconClass}></div>
             <div className={iconClass}></div>
             <div className={iconClass}></div>

@@ -16,10 +16,10 @@ const NavBar = () => {
                 <div className = "nav-items">
                     <Link className = "nav-link" to='/Home'>Home</Link>
                     <Link className = "nav-link" to='/Register'>Extra Page</Link>
-                    <div className="nav-search">
+                    {/* <div className="nav-search">
                         <input type="search"></input>
                         <button>Search</button>
-                    </div>
+                    </div> */}
                 </div>
             </nav>
         </div>

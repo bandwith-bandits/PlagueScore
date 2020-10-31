@@ -6,7 +6,7 @@
 }
 
 .nav-link {
-    background-color: #6ee9f1;
+    background-color: #b66ef1;
     color: rgb(250, 250, 250);
     transition: background-color 0.5s;
     padding: 10px;
@@ -17,7 +17,7 @@
 }
 
 .nav-link:hover {
-    background-color: #08a8bd;
+    background-color: #e1b2f3;
 }
 .nav-search {
     display: inline-block;

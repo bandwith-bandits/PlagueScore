@@ -5,8 +5,8 @@ import './Home.css';
 
 function Home() {
     return (
-        <div className="App">
-            <header className="App-header">
+        <div className="landing">
+            <header className="landing-header">
                 <SplashSearch></SplashSearch>
             </header>
             <h3>Top Comment</h3>
