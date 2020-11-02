@@ -1,0 +1,15 @@
+.card {
+    margin: 15px;
+    padding: 5px;
+    box-shadow: rgb(231, 231, 231) 0 0 4px;
+    border-radius: var(--card-border-radius);
+    border: var(--card-border);
+
+    font-size: 1.2em;
+    background-color: var(--review-background);
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: rgb(223, 223, 223) 0 0 4px;;
+}

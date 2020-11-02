@@ -1,1 +1,14 @@
 
+/* Website Colors */
+:root {
+    --default-color: rgb(100, 100, 100);
+    --footer-background: rgb(240, 240, 240);
+    --review-background: rgb(253, 253, 253);
+    --card-border: solid rgb(151, 151, 151) 0.8px;
+    --card-border-radius: 6px;
+}
+
+body {
+    font-size: 1.6em;
+    color: var(--default-color);
+}

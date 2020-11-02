@@ -1,7 +1,9 @@
 import React from 'react';
 import {useEffect, useState} from 'react'
 import {useLocation} from "react-router-dom";
+import NavBar from '../../components/NavBar/NavBar.js';
 import PageResult from '../../components/PageResult/PageResult.js'
+import './Results.css';
 function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -15,12 +17,13 @@ const Results = (props) => {
             .then(data => setPages(data))
             .catch(err => console.debug(`could not fetch search results at /search?query=${query.get("q")}`))
     });
-    const listing = pages.map(element => <PageResult data={element} />);
+    const listing = pages.map(element => <PageResult key={element.id} data={element} />);
     return <div>
+        <NavBar />
         <h2>Search Results</h2>
-        <ul className="result-list">
-            {listing}
-        </ul>
+            <ul className="result-list">
+                {listing}
+            </ul>
     </div> 
 }
 

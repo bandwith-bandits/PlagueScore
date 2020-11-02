@@ -1,10 +1,9 @@
 import React from 'react';
-
+import './Footer.css';
 const Footer = function() {
     return (
         <footer>
-            <p>This is the footer!</p>
-            <p>Plague Rank!</p>
+            <p>Plague Score &#169;2020</p>
         </footer>
     );
 }
