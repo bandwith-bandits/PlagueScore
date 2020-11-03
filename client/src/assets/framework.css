@@ -11,4 +11,11 @@
 body {
     font-size: 1.6em;
     color: var(--default-color);
+    overflow-x: hidden;
+}
+
+button {
+    background-color: rgb(119, 170, 236);
+    border-color:  rgb(97, 136, 187);
+    transition: background-color 0.2s;
 }

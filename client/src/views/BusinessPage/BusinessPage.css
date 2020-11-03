@@ -1,0 +1,21 @@
+.business-page {
+    display: grid;
+    margin-left: 200px;
+    margin-right: 200px;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media only screen and (max-width: 600px) {
+    .business-page {
+        display: grid;
+        margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Review Component has class Review, be careful of Review.js component changing */
+.review {
+
+}

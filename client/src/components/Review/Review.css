@@ -1,10 +1,16 @@
 .review {
-    max-width: 800px;
-    text-align: left;
+    padding: 20px;
+    width: 100%;
 }
 .review-title {
-    font: bold 1.2em 'Montserrat';
+    font-size: 1.2em;
 }
+
+.review-ratings > div{
+    display: inline;
+    margin-right: 15px;
+}
+
 .review-user {
-    width: 100%;
+    text-decoration: underline rgb(1, 1, 1);
 }

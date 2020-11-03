@@ -1,5 +1,8 @@
 .card {
+    position: relative;
     margin: 15px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 5px;
     box-shadow: rgb(231, 231, 231) 0 0 4px;
     border-radius: var(--card-border-radius);
@@ -8,8 +11,12 @@
     font-size: 1.2em;
     background-color: var(--review-background);
     transition: box-shadow 0.2s;
+    transition: transform 0.3s;
 }
 
 .card:hover {
-    box-shadow: rgb(223, 223, 223) 0 0 4px;;
+    transform: translate(0, -2px);
+    -webkit-transform: translate(0, -2px);
+    -moz-transform: translate(0, -2px);
+    box-shadow: rgb(209, 209, 209) 0 0 4px;
 }

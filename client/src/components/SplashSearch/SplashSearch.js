@@ -15,7 +15,7 @@ let SplashSearch = (props) => {
         <form>
             <input onChange={(e) => setSearch(e.target.value)} type="search" ></input>
             <Link to={searchStart+search}>
-                <button className="button">Search!</button>
+                <button className="splash-button"><i class="fas fa-search"></i></button>
             </Link>
         </form>
     </div>
