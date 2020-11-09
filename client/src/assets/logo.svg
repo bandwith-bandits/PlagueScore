@@ -5,20 +5,81 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="48"
-   height="48"
-   viewBox="0 0 12.7 12.7"
+   width="100mm"
+   height="100mm"
+   viewBox="0 0 100 100"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="logo.svg"
-   inkscape:export-filename="C:\Users\micha\OneDrive - University of Florida\Code\PlagueScore\client\src\assets\logo.png"
-   inkscape:export-xdpi="192.07104"
-   inkscape:export-ydpi="192.07104">
+   sodipodi:docname="logo.svg">
   <defs
-     id="defs2" />
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient847">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop843" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop845" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient847"
+       id="radialGradient849"
+       cx="95.250008"
+       cy="117.55058"
+       fx="95.250008"
+       fy="117.55058"
+       r="46.869045"
+       gradientTransform="matrix(1.0806452,0,0,1.0893601,-52.282642,-78.570519)"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1083"
+       x="-3.7447142e-05"
+       width="1.0000749"
+       y="-3.7147565e-05"
+       height="1.0000743">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.0015805442"
+         id="feGaussianBlur1085" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1087"
+       x="-4.252472e-05"
+       width="1.000085"
+       y="-4.252472e-05"
+       height="1.000085">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.0015805442"
+         id="feGaussianBlur1089" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1091"
+       x="-5.5940356e-05"
+       width="1.0001119"
+       y="-8.0172751e-05"
+       height="1.0001603">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.0015805442"
+         id="feGaussianBlur1093" />
+    </filter>
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -26,19 +87,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.919596"
-     inkscape:cx="9.318244"
-     inkscape:cy="5.7251437"
+     inkscape:zoom="0.35"
+     inkscape:cx="400"
+     inkscape:cy="560"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1566"
-     inkscape:window-height="1009"
-     inkscape:window-x="118"
-     inkscape:window-y="36"
-     inkscape:window-maximized="0"
-     units="px" />
+     inkscape:window-height="1030"
+     inkscape:window-x="192"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -47,7 +107,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,47 +115,35 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:#ffffff;stroke-width:5.66499"
-       id="rect840"
-       width="12.695301"
-       height="12.654196"
-       x="-7.9999995e-07"
-       y="0.041107949" />
-    <path
-       id="path845"
-       style="opacity:0.86;fill:#000000;stroke-width:6.15407"
-       d="M 7.4663657e-8,11.75986 H 12.695301 v 0.935444 H 7.4663657e-8 Z" />
-    <path
-       id="path847"
-       style="opacity:0.86;fill:#000000;stroke-width:5.827"
-       d="M 11.759858,0.04110887 H 12.6953 V 12.695304 h -0.935442 z" />
+    <ellipse
+       style="fill:url(#radialGradient849);fill-opacity:1;stroke-width:6.45902;filter:url(#filter1083)"
+       id="ellipse841"
+       cx="50.648811"
+       cy="49.484386"
+       rx="50.648808"
+       ry="51.057266"
+       inkscape:export-xdpi="192.071"
+       inkscape:export-ydpi="192.071" />
+    <circle
+       style="fill:#000080;stroke-width:5.66499;filter:url(#filter1087)"
+       id="path837"
+       cx="51.404762"
+       cy="49.892841"
+       r="44.601189"
+       inkscape:export-xdpi="192.071"
+       inkscape:export-ydpi="192.071" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.07084px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.101772"
-       x="0.22969481"
-       y="8.8325739"
-       id="text12"><tspan
+       style="font-style:normal;font-weight:normal;font-size:62.5561px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.56391;filter:url(#filter1091)"
+       x="12.286051"
+       y="71.83548"
+       id="text853"
+       inkscape:export-xdpi="192.071"
+       inkscape:export-ydpi="192.071"><tspan
          sodipodi:role="line"
-         id="tspan10"
-         x="0.22969481"
-         y="8.8325739"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.77008px;font-family:'French Script MT';-inkscape-font-specification:'French Script MT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.101772">PS</tspan></text>
-    <path
-       id="rect835"
-       style="opacity:1;fill:#31d3ff;stroke-width:6.05612;fill-opacity:1"
-       d="M 0.03340862,11.392364 H 12.327806 v 0.935444 H 0.03340862 Z" />
-    <path
-       id="rect837"
-       style="opacity:1;fill:#31d3ff;fill-opacity:1;stroke-width:5.75136"
-       d="m 11.392364,9.5488789e-7 h 0.935442 V 12.327808 h -0.935442 z" />
-    <path
-       id="path836"
-       style="opacity:0.86;fill:#000000;stroke-width:3.48903"
-       d="M 0.30067895,2.9e-6 V 12.695304 H 7.4663657e-8 V 2.9e-6 Z" />
-    <path
-       id="path838"
-       style="opacity:0.86;fill:#000000;stroke-width:3.48903"
-       d="M 12.6953,0.34178685 H -8e-7 V 0.04110795 H 12.6953 Z" />
+         id="tspan851"
+         x="12.286051"
+         y="71.83548"
+         style="fill:#ffffff;stroke-width:1.56391">PS</tspan></text>
   </g>
 </svg>

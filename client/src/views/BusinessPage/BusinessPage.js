@@ -19,7 +19,7 @@ const BusinessPage = (props) => {
     const reviewList = reviews.map((info) => <Review user={info.user} title={info.title} content={info.review}/>)
     return (<div>
         <NavBar />
-        <div class="business-page">
+        <div id="business-page">
             <div>
                 <h1>{name}</h1>
                 <Modal buttonText="Review!" title="Write a review!">
