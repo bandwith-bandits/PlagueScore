@@ -1,0 +1,31 @@
+@import '~leaflet/dist/leaflet.css';
+#results-page {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: minmax(50px, 100px);
+}
+.results-header {
+    font-size: 1.8em;
+    padding: 10px;
+}
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    grid-row: 1/5;
+    grid-column: 2/3;
+}
+
+.result img {
+    width: 200px;
+    height: auto;
+}
+.result {
+    margin: 10px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+}

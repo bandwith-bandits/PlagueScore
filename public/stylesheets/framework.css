@@ -1,0 +1,30 @@
+/* Website Colors */
+:root {
+    --default-color: rgb(100, 100, 100);
+    --footer-background: rgb(240, 240, 240);
+    --review-background: rgb(253, 253, 253);
+    --card-border: solid rgb(151, 151, 151) 0.8px;
+    --card-border-radius: 6px;
+}
+
+body {
+    font-size: 1.2em;
+    color: var(--default-color);
+    overflow-x: hidden;
+    padding: 0px;
+    margin: 0px;
+    min-height: 100%;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 350px;
+    background-color: var(--footer-background)
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat';
+}
