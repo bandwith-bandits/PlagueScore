@@ -55,12 +55,11 @@ module.exports.destroyBusiness = async (req, res) => {
 }
 
 module.exports.getByName = async (req, res) => {
-	//const title = req.params.title;
-	//const business = await Business.find({title: {$regex: title, $options: "i"}});
-	const business = false;
-	if(!business){
+	const title = req.query.title;
+	var businesses = await Business.find({title: {$regex: title, $options: "i"}});
+	if(!businesses[0]){
 		const businesses = await Business.find({});
 		return res.render('businesses/index', {businesses});
 	}	
-	res.render('businesses/search', {business})
+	res.render('businesses/search', {businesses})
   };

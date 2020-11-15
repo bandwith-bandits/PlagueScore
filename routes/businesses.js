@@ -13,7 +13,7 @@ router.route('/')
 
 router.get('/new', isLoggedIn, businesses.renderNewForm);
 
-router.get('/search?query=:title', catchAsync(businesses.getByName));
+router.get('/search', catchAsync(businesses.getByName));
 
 router.route('/:id')
 	.get( catchAsync(businesses.showBusiness) )
