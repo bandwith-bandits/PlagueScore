@@ -1,3 +1,4 @@
+<% layout('layouts/boilerplate')%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +22,8 @@
             <header class="landing-header">
                 <div class="splash">
 					<img class="splash-logo" src="logo.png" alt="React logo" />
-					<h1>Plague Score</h1>
-					<form action="/businesses" method="get">
+					<h1>PlagueScore</h1>
+					<form action="/businesses/search" method="get">
 						<input type="text" id="query" name="query"></input><button class="splash-button"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
