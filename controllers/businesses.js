@@ -58,8 +58,7 @@ module.exports.getByName = async (req, res) => {
 	const title = req.query.title;
 	var businesses = await Business.find({title: {$regex: title, $options: "i"}});
 	if(!businesses[0]){
-		const businesses = await Business.find({});
-		return res.render('businesses/index', {businesses});
+		return res.redirect('/businesses');
 	}	
 	res.render('businesses/search', {businesses})
   };
