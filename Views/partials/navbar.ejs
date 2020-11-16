@@ -11,11 +11,15 @@
         <a class="nav-link" href="/businesses/new">New Business</a>
       </div>
 	  <div class="navbar-nav ml-auto">
+      <form action="/businesses/search" method="get" class="nav-link">
+        <input type="text" id="title" name="title"></input><button class="btn btn-primary"><i class="fas fa-search"></i></button>
+      </form>
 		<% if(!currentUser) {%>
 		<a class="nav-link" href="/login">Login</a>
 		<a class="nav-link" href="/register">Sign-up</a>
 		<% } else {%>
-		<a class="nav-link" href="/logout">Logout</a>
+    <a class="nav-link" href="/logout">Logout</a>
+    
 		<% } %>
     </div>
   </div>
