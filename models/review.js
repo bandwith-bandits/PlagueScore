@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 
 const ReviewSchema = new Schema({
 	body: String,
-	rating: Number,
+	rating1: Number,
+	rating2: Number,
+	rating3: Number,
 	author: {
 		type: Schema.Types.ObjectId,
 		ref: 'User'
