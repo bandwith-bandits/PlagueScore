@@ -13,17 +13,20 @@
 	
 	<link rel="stylesheet" href="stylesheets/framework.css" />
 	<link rel="stylesheet" href="stylesheets/landing.css" />
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
 	<title>Home</title>
 </head>
 	
 	<body>
 		<div class="landing">
+			<%- include('partials/navbar') %>
             <header class="landing-header">
                 <div class="splash">
 					<img class="splash-logo" src="logo.png" alt="React logo" />
-					<h1>Plague Score</h1>
-					<form action="/businesses" method="get">
-						<input type="text" id="query" name="query"></input><button class="splash-button"><i class="fas fa-search"></i></button>
+					<h1>PlagueScore</h1>
+					<form action="/businesses/search" method="get">
+						<input type="text" id="title" name="title"></input><button class="splash-button"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
             </header>

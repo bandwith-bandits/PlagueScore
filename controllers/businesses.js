@@ -53,3 +53,12 @@ module.exports.destroyBusiness = async (req, res) => {
 	req.flash('success', 'Succesfully deleted business')
 	res.redirect(`/businesses`);
 }
+
+module.exports.getByName = async (req, res) => {
+	const title = req.query.title;
+	var businesses = await Business.find({title: {$regex: title, $options: "i"}});
+	if(!businesses[0]){
+		return res.redirect('/businesses');
+	}	
+	res.render('businesses/search', {businesses})
+  };

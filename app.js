@@ -1,3 +1,4 @@
+const config = require("./config/config.js");
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -16,7 +17,8 @@ const userRoutes = require('./routes/users');
 const businessesRoutes = require('./routes/businesses');
 const reviewsRoutes = require('./routes/reviews');
 
-mongoose.connect('mongodb://localhost:27017/plague-score', {
+const link = config.db.uri;
+mongoose.connect(link, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
