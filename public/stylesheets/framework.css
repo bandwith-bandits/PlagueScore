@@ -1,15 +1,21 @@
 /* Website Colors */
+/* https://coolors.co/0d3b66-ee964b-7a7d7d-f1f2f6-0fa3b1 */
 :root {
-    --default-color: rgb(100, 100, 100);
-    --footer-background: rgb(240, 240, 240);
-    --review-background: rgb(253, 253, 253);
-    --card-border: solid rgb(151, 151, 151) 0.8px;
+    --primary-lighter: #357fc4;
+    --primary: #0D3B66;
+    --primary-darker: #031f38;
+    --secondary-lighter: hsl(28, 100%, 79%);
+    --secondary: #EE964B;
+    --secondary-darker: #b95a06;
+    --text-dark: #373838;
+    --text-light: #dce0e0;
+    --neutral: #bad4d4;
     --card-border-radius: 6px;
 }
 
 body {
     font-size: 1.2em;
-    color: var(--default-color);
+    color: var(--text);
     overflow-x: hidden;
     padding: 0px;
     margin: 0px;
@@ -17,14 +23,25 @@ body {
 }
 
 footer {
+    /* Positions items inside the footer*/
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 350px;
-    background-color: var(--footer-background)
+
+    /* Places the footer at the bottom of the page and adds padding*/
+    padding: 20px;
+    margin-bottom:0;
+    margin-top: auto;
+    background-color: var(--primary);
+    color: var(--text-light); 
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat';
+}
+
+.card {
+    border-color: var(--neutral) !important;
+    box-shadow: 0 0 2px var(--neutral);
 }

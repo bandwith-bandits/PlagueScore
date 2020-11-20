@@ -19,18 +19,13 @@
 </head>
 	
 	<body>
-		<div class="landing">
-			<%- include('partials/navbar') %>
-            <header class="landing-header">
-                <div class="splash">
-					<img class="splash-logo" src="logo.png" alt="React logo" />
-					<h1>PlagueScore</h1>
-					<form action="/businesses/search" method="get">
-						<input type="text" id="title" name="title"></input><button class="splash-button"><i class="fas fa-search"></i></button>
-					</form>
-				</div>
-            </header>
-            <h3>Top Comment</h3>
-        </div>	
+		<%- include('partials/navbar') %>
+		<header class="landing-header">
+			<h1>PlagueScore</h1>
+			<form action="/businesses/search" method="get">
+				<input type="text" id="title" name="title"></input><button class="splash-button"><i class="fas fa-search"></i></button>
+			</form>
+		</header>
+		<h3>Top Comment</h3>	
 	</body>
 </html>
