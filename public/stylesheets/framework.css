@@ -1,15 +1,16 @@
 /* Website Colors */
 /* https://coolors.co/0d3b66-ee964b-7a7d7d-f1f2f6-0fa3b1 */
 :root {
+    --primary-lightest: #d1e8fd;
     --primary-lighter: #357fc4;
     --primary: #0D3B66;
     --primary-darker: #031f38;
-    --secondary-lighter: hsl(28, 100%, 79%);
-    --secondary: #EE964B;
+    --secondary-lighter: #ffffff;
+    --secondary: #0fa3b1;
     --secondary-darker: #b95a06;
     --text-dark: #373838;
     --text-light: #dce0e0;
-    --neutral: #bad4d4;
+    --neutral: #c9c9c9;
     --card-border-radius: 6px;
 }
 

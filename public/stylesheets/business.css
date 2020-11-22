@@ -1,3 +1,27 @@
-.business-header img{
-    
+.business-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.business-reviews div {
+    background-color: var(--secondary-lighter);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.picture-gallery {
+    grid-column: 3/-1;
+    grid-row: 1/4;
+}
+
+.half {
+    grid-column: span 2;
+}
+.review {
+    margin: 10px;
+    align-self: center;
 }

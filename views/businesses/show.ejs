@@ -1,33 +1,44 @@
 <% layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/business.css">
 <link rel="stylesheet" href="/stylesheets/stars.css">
-			<div class="business-header">
-				<h5 class="card-title"><%= business.title%></h5>
-				<p class="card-text"><%= business.description%></p>
-					<span class="text-muted"><%= business.location%></span>
-				  <% if(currentUser){ %>
-				  <div class="card-body">
-					  <!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-						Add Review
-					</button>
-					
-					
-					
-					<% if( currentUser && business.author.equals(currentUser._id)) {%>
-					<a class="card-link btn btn-info" href="/businesses/<%=business._id%>/edit">Edit</a>
+		<!-- This is the business name and description-->
+			<div class="picture-gallery">
+				Picture Gallery
+			</div>
+			<div class="half">
+				<h5><%= business.title%></h5>
+				<p><%= business.description%></p>
+			</div>
+
+			<!-- This is the business hours and ratings-->
+			<div>
+				Hours
+				<p class="text-muted"><%= business.location%></p>
+			</div>
+			<div>
+				Phone Number
+			</div>
+
+			<% if(currentUser){ %>
+				<div class="half">
+					<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+					Add Review
+				</button>
+				
+				<% if( currentUser && business.author.equals(currentUser._id)) {%>
+					<a class="" href="/businesses/<%=business._id%>/edit">Edit</a>
 					<form class="d-inline" action="/businesses/<%=business._id%>?_method=DELETE" method="POST">
 						<button class="btn btn-danger">Delete</button>
 					</form>
-					<% } %>
-				 </div>  
-				 <% } %>
-			</div>
-		<div class="business-reviews">
-			<% for(let review of business.reviews) { %>
-				<%- include('../partials/review.ejs', {review}) %>
+				<% } %>
+				</div>  
 			<% } %>
-		</div>
+			
+		<!-- These are the reviews for the business -->
+			<% for(let review of business.reviews) { %>
+				<%- include('../partials/review.ejs', {review, currentUser, business}) %>
+			<% } %>
 
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

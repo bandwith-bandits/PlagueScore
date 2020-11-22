@@ -2,25 +2,35 @@
 #results-page {
     width: 100%;
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: minmax(50px, 100px);
 }
+
 .results-header {
+    grid-column: 1/-1;
     font-size: 1.8em;
     padding: 10px;
 }
 .leaflet-container {
-    width: 100%;
+    /* Sizing */
+    width: 90%;
     height: 100%;
     overflow: hidden;
-    grid-row: 1/5;
-    grid-column: 2/3;
+    /* Grid Alignment */
+    justify-self: center;
+    grid-row: 2/6;
+    grid-column: 2/-1;
+    /* Styling */
+    border-radius: 10px;
+    border: solid 2px var(--neutral);
+    box-shadow: 0 0 6px var(--neutral);
 }
 
 .result img {
     width: 200px;
     height: auto;
 }
+
 .result {
     margin: 10px;
     width: 90%;
@@ -28,4 +38,5 @@
     flex-direction: row;
     justify-self: center;
     align-self: center;
+    transition: filter 0.2s;
 }
