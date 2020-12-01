@@ -30,3 +30,13 @@ module.exports.isReviewAuthor = async (req, res, next) => {
 	}
 	next();
 }
+
+module.exports.reviewAuthorIsNotBusinessAuthor = async (req, res, next) => {
+	const {id} = req.params;
+	const business = await Business.findById(id);
+	if(req.user._id.equals(business.author)){
+		req.flash('error', 'You cannot leave a review on your own business!');
+		return res.redirect(`/businesses/${business._id}`);
+	}
+	next();
+}

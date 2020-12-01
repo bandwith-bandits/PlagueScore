@@ -21,10 +21,12 @@
 
 			<% if(currentUser){ %>
 				<div class="half">
-					<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-					Add Review
-				</button>
+					<%if(!business.author.equals(currentUser._id)){%>
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							Add Review
+						</button>
+					<% } %>
 				
 				<% if( currentUser && business.author.equals(currentUser._id)) {%>
 					<a class="" href="/businesses/<%=business._id%>/edit">Edit</a>
