@@ -8,7 +8,7 @@
     background-color: var(--secondary-lighter);
 }
 
-.container {
+.business-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
@@ -24,4 +24,6 @@
 .review {
     margin: 10px;
     align-self: center;
+    height: 90%;
+    grid-column: span 2;
 }

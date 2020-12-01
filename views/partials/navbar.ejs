@@ -1,24 +1,23 @@
 <link rel="stylesheet" href="/stylesheets/navbar.css">
 <nav>
-    <!-- Left -->
     <div>
-      <a href="/">PlagueScore</a>
-      <a href="/businesses/new">New Business</a>
+      <a href="/" class="navbar-logo"><span>PlagueScore</span></a>
+
+    </div>
       <!--
+        <a href="/businesses/new">New Business</a>
         <a href="/">Home</a>
         <a href="/businesses">Businesses</a>
       -->
-    </div>
-    <!-- Right -->
-    <div>
-      <form action="/businesses/search" method="get" class="navbar-search">
-        <input type="text" id="title" name="title"></input><button><i class="fas fa-search"></i></button>
-      </form>
-      <% if(!currentUser) {%>
-        <a href="/login">Login</a>
-        <a href="/register">Sign-up</a>
-      <% } else {%>
-        <a href="/logout">Logout</a>
-      <% } %>
-    </div>
+      <div>
+        <form action="/businesses/search" method="get" class="navbar-search">
+          <input type="text" id="title" name="title"></input><button><i class="fas fa-search"></i></button>
+        </form>
+        <% if(!currentUser) {%>
+          <a href="/login">Login</a>
+          <a href="/register">Sign-up</a>
+        <% } else {%>
+          <a href="/profile">Profile</a>
+        <% } %>
+      </div>
 </nav>

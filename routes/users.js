@@ -13,9 +13,8 @@ router.route('/login')
 	.get(users.renderLogin)
 	.post(passport.authenticate('local', {failureFlash: true, failureRedirect: '/login' }), users.login )
 
-router.route('/profile')
-.get(users.renderProfile)
-.post(passport.authenticate('local', {failureFlash: true, failureRedirect: '/login' }), users.login )
-
+router.get('/profile', catchAsync(users.renderProfile))
+router.get('/profile/newIcon', users.newIcon)
+router.post('/profile/updateProfile', catchAsync(users.updateProfile))
 router.get('/logout', users.logout)
 module.exports = router;

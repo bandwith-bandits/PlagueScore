@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Review = require('../models/review.js')
 
 module.exports.renderRegister = (req, res) => {
 	res.render('users/register');
@@ -6,8 +7,8 @@ module.exports.renderRegister = (req, res) => {
 
 module.exports.register = async (req, res) => {
 	try{
-	const {email, username, password } = req.body;
-	const user = new User({ email, username});
+	const {email, username, password, userIcon } = req.body;
+	const user = new User({ email, username, userIcon});
 	const registeredUser = await User.register(user, password);
 	req.login(registeredUser, err =>{
 		if(err) return next(err);
@@ -31,10 +32,46 @@ module.exports.login = (req, res) => {
 	res.redirect(redirectUrl);
 }
 
-module.exports.renderProfile = (req, res) => {
-	
-	res.render('users/profile')
+module.exports.renderProfile = async (req, res) => {
+	const currentUser = req.user;
+	if (currentUser === undefined) {
+		req.flash('error', 'Not logged in!');
+		res.redirect('/login');
+	} else {
+		try {
+			const userReviews = await Review.find({author: currentUser._id});
+			// console.log(userReviews);
+			res.render('users/profile', {currentUser, userReviews});
+		  } catch(err) {
+			// console.log("Error: " + err.message);
+			const userReviews = [];
+			req.flash('error', err.message);
+			res.render('users/profile', {currentUser, userReviews});
+		  }
+	}
 }
+module.exports.newIcon = (req, res) => {
+	const icons = req.app.get('userIcons');
+	res.json({icon: icons[Math.floor(Math.random() * icons.length)]})
+}
+
+module.exports.updateProfile = async (req,res) => {
+	const currentUser = req.user;
+	const updatedUser = { 
+		...currentUser._doc, // start with the old object
+		...req.body, // overwrite old object with any changes
+		username: currentUser._doc.username, 
+		_id: currentUser._doc._id
+	};
+	const business = await User.findByIdAndUpdate(currentUser._id, updatedUser);
+	if (business !== undefined) {
+		res.json(updatedUser);
+	} else {
+		res.json(currentUser);
+		res.flash('error', "could not update user");
+	}
+}
+
 
 module.exports.logout = (req, res) =>{
 	req.logout();

@@ -9,7 +9,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
-
+const userIcons = require('./utils/loadIcons');
 const Business = require('./models/business')
 const Review = require('./models/review');
 
@@ -37,10 +37,13 @@ const app = express();
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
+let icons = userIcons.loadIcons()
+app.set('userIcons', icons)
 
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.json());
 
 const sessionConfig = {
 	secret: 'secret',

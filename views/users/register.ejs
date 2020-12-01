@@ -1,26 +1,50 @@
 <% layout('layouts/boilerplate')%>
-<h1>Register</h1>
-<form action="/register" method="POST">
-	<div class="form-horizontal">
-		<label class="mb-3" for="username">Username</label>
-		<div class="col-sm-3">
-		<input class="form-control" type="text" id="username" name="username" required>
-		</div>
-	</div>
-	<div class="mb-3"></div>
-	<div class="form-horizontal">
-		<label class="mb-3" for="email">Email</label>
-		<div class="col-sm-3">
-		<input class="form-control" type="email" id="email" name="email" required>
-	</div>
-	</div>
-	<div class="mb-3"></div>
-		<div class="form-horizontal">
-		<label class="mb-3" for="password">Password</label>
-		<div class="col-sm-3">
-		<input class="form-control" type="password" id="password" name="password" required>
-	</div>
-	</div>
-	<div class="mb-3"></div>
-	<button class="btn btn-success">Register</button>
-</form>
+<link rel="stylesheet" href="/stylesheets/register.css">
+<div class="card register">
+	<h1>Register</h1>
+	<form action="/register" method="POST">
+			<label for="username">Username</label>
+			<input type="text" id="username" name="username" required>
+			<label for="email">Email</label>
+			<input  type="email" id="email" name="email" required>
+			<label for="password">Password</label>
+			<input type="password" id="password" name="password" required>
+			<div id="iconSelector">
+				<label for="userIcon">Icon <i class="fas fa-sync" v-on:click="newIcon"></i></label>
+				<img v-bind:src="iconUrl">
+				<input name="userIcon" type="text" id="userIcon" v-model="userIcon" required>
+			</div>
+			
+		<button class="submit">Register</button>
+	</form>
+</div>
+<script>
+	const iconSelector = {
+		data() {
+			return {
+				userIcon: ""
+			}
+		},
+		created() {
+			axios
+				.get("/profile/newIcon")
+				.then(res => (this.userIcon = res.data.icon))
+				.catch(err => {this.userIcon = ""; console.log(err);});
+		},
+		methods: {
+			newIcon() {
+				axios
+					.get("/profile/newIcon")
+					.then(res => (this.userIcon = res.data.icon))
+					.catch(err => {this.userIcon = ""; console.log(err);});
+			}
+		},
+		computed: {
+			iconUrl: function() {
+				return "/assets/userIcons/"+this.userIcon;
+			}
+		}
+	}
+	
+	Vue.createApp(iconSelector).mount('#iconSelector');
+</script>

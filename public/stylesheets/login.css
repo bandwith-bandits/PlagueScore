@@ -1,0 +1,16 @@
+.login input {
+    display: block;
+    margin-bottom: 10px;
+    
+}
+
+.login form {
+   display: inline-block;
+}
+
+.login {
+    display: inline-block;
+    padding: 30px;
+    margin-top: 20px;
+    background-color: var(--secondary);
+}

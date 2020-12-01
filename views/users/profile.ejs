@@ -1,1 +1,104 @@
-<% layout('../layouts/boilerplate.ejs') %>
+<% layout('layouts/boilerplate.ejs') %>
+<link rel="stylesheet" href="/stylesheets/profile.css">
+<link rel="stylesheet" href="/stylesheets/stars.css">
+<h2>User Profile</h2>
+<a href="/logout"><button class="submit">Logout</button></a>
+<a href="/businesses/new"><button class="create">New Business</button></a>
+<div id="profileDisplay">
+    <!-- Username -->
+    <h3>Username</h3>
+    <div class="user-info"><%= currentUser.username%></div>
+    <!-- Email -->
+    <h3>Email <i class="fas fa-edit" v-if="!editingEmail" v-on:click="editEmail"></i></h3>
+    <input type="test" class="user-editing" v-if="editingEmail" v-model="user.email">
+    <div v-else>
+        <span class="user-info">{{user.email}}</span>
+    </div>
+    <!-- Icon -->
+    <h3>Icon <i class="fas fa-sync" v-on:click="newIcon"></i></h3>
+    <img v-bind:src="iconUrl" alt="">
+    <!-- Submit -->
+    <div v-if="hasChanged">
+        <button v-on:click="submitChanges" class="submit">Submit</button>
+        <button v-on:click="cancelChanges" class="cancel">Cancel</button>
+    </div>
+    
+</div>
+<h3>Reviews</h3>
+<% for (review of userReviews) {%>
+    <div class="card review half">
+        <div class="card-body">
+            <h5 class="card-title"><%= review.author.username%></h5>
+                    <p class="starability-result" data-rating="<%=review.rating%>">
+                        Rated: <%= review.rating %> stars
+                    </p>
+            <p class="card-text">Review: <%= review.body %></p>
+            <% if( currentUser && review.author.equals(currentUser._id)) {%>
+            <% } %>
+        </div>
+    </div>
+<% } %>
+<script>
+const profileDisplay = {
+    data() {
+        return {
+            editingEmail: false,
+            hasChanged: false,
+            user: {
+                _id: "<%= currentUser._id%>",
+                username: "<%= currentUser.ussername%>",
+                email: "<%= currentUser.email%>",
+                userIcon: "<%= currentUser.userIcon%>",
+                __v: 0,
+            },
+            currentUser: {
+                _id: "<%= currentUser._id%>",
+                username: "<%= currentUser.ussername%>",
+                email: "<%= currentUser.email%>",
+                userIcon: "<%= currentUser.userIcon%>",
+                __v: 0,
+            },
+        }
+    },
+    methods: {
+        editEmail() {
+            this.editingEmail = true;
+            this.hasChanged = true;
+        },
+        submitChanges() {
+            this.editingEmail = false;
+            this.hasChanged = false;
+            axios
+                .post("/profile/updateProfile", this.user)
+                .then(res => {
+                    console.log(res.data); 
+                    this.user = {
+                        ...this.user, 
+                        ...res.data};
+                    this.currentUser = this.user;
+                })
+                .catch(err => {this.user.email = "Error, try reloading the page"; console.log(err);});
+        },
+        cancelChanges() {
+            this.editingEmail = false;
+            this.hasChanged = false;
+            Object.assign(this.user, this.currentUser);
+        },
+        newIcon() {
+            this.hasChanged = true;
+            axios
+                .get("/profile/newIcon")
+                .then(res => (this.user.userIcon = res.data.icon))
+                .catch(err => {this.user.userIcon = ""; console.log(err);});
+        }
+    },
+    computed: {
+        iconUrl: function() {
+            return "/assets/userIcons/"+this.user.userIcon;
+        }
+    }
+}
+
+Vue.createApp(profileDisplay).mount('#profileDisplay');
+</script>
+<div>User Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

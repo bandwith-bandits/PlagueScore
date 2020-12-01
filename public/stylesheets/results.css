@@ -1,6 +1,6 @@
-@import '~leaflet/dist/leaflet.css';
 #results-page {
     width: 100%;
+    margin:auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: minmax(50px, 100px);
@@ -14,7 +14,6 @@
 .leaflet-container {
     /* Sizing */
     width: 90%;
-    height: 100%;
     overflow: hidden;
     /* Grid Alignment */
     justify-self: center;
@@ -26,17 +25,19 @@
     box-shadow: 0 0 6px var(--neutral);
 }
 
-.result img {
-    width: 200px;
-    height: auto;
-}
-
-.result {
-    margin: 10px;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    align-self: center;
-    transition: filter 0.2s;
+@media only screen and (max-width: 800px) {
+    #results-page {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .leaflet-container {
+        /* Sizing */
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 0px;
+        border: none;
+        box-shadow: none;
+    }
 }

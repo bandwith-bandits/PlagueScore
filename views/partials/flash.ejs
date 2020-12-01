@@ -1,13 +1,38 @@
 <% if(success && success.length) {%>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
 	<%= success %>
-  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+  <button id="removeFlash1" type="button" class="cancel" data-dismiss="alert" aria-label="Close"><i  class="far fa-window-close"></i></button>
 </div>
 <% } %>
 
 <% if(error && error.length) {%>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
 	<%= error %>
-  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+  <button type="button" class="cancel" data-dismiss="alert" aria-label="Close" id="removeFlash2"><i class="far fa-window-close"></i></button>
 </div>
 <% } %>
+
+<script>
+  const removeFlash = document.getElementById("removeFlash1");
+  if (removeFlash) {
+      removeFlash.addEventListener("click", (event) => {
+      removeFlash.removeEventListener("click", (event) => {
+        removeFlash.removeEventListener();
+        removeFlash.parentElement.remove();
+      });
+      removeFlash.parentElement.remove();
+    })
+  }
+  
+const removeFlash2 = document.getElementById("removeFlash2");
+if (removeFlash2) {
+  removeFlash2.addEventListener("click", (event) => {
+    removeFlash2.removeEventListener("click", (event) => {
+      removeFlash2.removeEventListener();
+      removeFlash2.parentElement.remove();
+    });
+    removeFlash2.parentElement.remove();
+  } )
+}
+
+</script>

@@ -9,8 +9,6 @@ router.route('/')
 	.get(catchAsync(businesses.index) )
 	.post(isLoggedIn, catchAsync(businesses.createBusiness) )
 
-
-
 router.get('/new', isLoggedIn, businesses.renderNewForm);
 
 router.get('/search', catchAsync(businesses.getByName));

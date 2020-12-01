@@ -1,0 +1,28 @@
+.register input {
+    display: block;
+    margin-bottom: 10px;
+    
+}
+
+.register textarea {
+    display: block;
+    margin-bottom: 10px;
+    
+}
+
+.register form {
+   display: inline-block;
+}
+.register img {
+    width: 100px;
+    padding: 20px;
+}
+.register button {
+    display: block;
+}
+.register {
+    display: inline-block;
+    padding: 30px;
+    margin-top: 15px;
+    background-color: var(--secondary);
+}

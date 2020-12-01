@@ -1,29 +1,28 @@
 <% layout('layouts/boilerplate')%>
-	<link rel="stylesheet" href="stylesheets/results.css">
+	<link rel="stylesheet" href="/stylesheets/results.css">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
 integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
 crossorigin=""/>
 	<div id="results-page">
-		<div class="results-header">All Results</div>
+		<div class="results-header">All Businesses</div>
+		<div class="leaflet-container" id="map">
+		</div>
 			<%for (let business of businesses){%>
 			<div class="card result">
-						<img class="img-fluid" alt="" src="<%=business.image%>">
+						<img alt="" src="<%=business.image%>">
 						<div class="card-body">
-							<h5 class="card-title"><%= business.title %> </h5>
+							<a href="/businesses/<%=business._id%>"><h5 class="card-title"><%= business.title %> </h5></a>
 							<p class="card-text"><%= business.description %></p>
 							<p class="card-text">
-								<small class="text-muted"><%= business.location%></small>
+								<small class="muted"><%= business.location%></small>
 							</p>
-							<a class="btn btn-primary" href="/businesses/<%=business._id%>">View <%=business.title%></a>
 						</div>
 			</div>
 			<% }%>
-		<div class="leaflet-container" id="map">
-		</div>
 	</div>
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
-	<script src="javascript/results_map.js"></script>
+	<script src="/javascript/results_map.js"></script>
 		
 		

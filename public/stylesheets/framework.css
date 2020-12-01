@@ -6,21 +6,40 @@
     --primary: #0D3B66;
     --primary-darker: #031f38;
     --secondary-lighter: #ffffff;
-    --secondary: #0fa3b1;
+    --secondary: #fff5ec;
     --secondary-darker: #b95a06;
+
     --text-dark: #373838;
-    --text-light: #dce0e0;
+    --text-link: #233838;
+    --text-muted: #8f9292;
+    --text-light: #ffffff;
+    /* This colors the borders of elements like card */
     --neutral: #c9c9c9;
     --card-border-radius: 6px;
-}
+    --btn-create: rgb(87, 175, 87);
+    --btn-submit: rgb(90, 161, 228);
+    --btn-delete: rgb(163, 110, 179);
+    --btn-cancel: rgb(207, 61, 61);
 
-body {
+    --small-screen: 600px;
+}
+html, body  {
+    height: 100%;
     font-size: 1.2em;
-    color: var(--text);
+}
+body {
+    color: var(--text-dark);
     overflow-x: hidden;
     padding: 0px;
     margin: 0px;
     min-height: 100%;
+    font-family: 'Quicksand';
+}
+.container {
+    min-height: 100%;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 footer {
@@ -38,11 +57,164 @@ footer {
     color: var(--text-light); 
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat';
+@media only screen and (max-width: 800px) {
+    .container {
+        width: 100%;
+    }
 }
 
+/*********************/
+/* Stylized Elements */
+/*********************/
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand';
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-link);
+}
+p {
+    font-family: Castoro;
+}
+/* Button colors should be based on the action that the button performs create, change, submit */ 
+button {
+    border: 1px solid var(--neutral);
+    padding: 0.3em 0.5em 0.3em 0.5em;
+    margin: 3px;
+    border-radius: 4px;
+    color: var(--text-light);
+    font-size: 0.8em;
+    font-family: Quicksand;
+} 
+
+input {
+    border: 2px solid var(--neutral);
+    border-radius: 4px;
+    font-family: Quicksand;
+    font-size: 1em;
+}
+
+textarea {
+    border: 2px solid var(--neutral);
+    border-radius: 4px;
+    font-family: Quicksand;
+    font-size: 1em;
+}
+
+label {
+    display: block;
+}
+/* Button Colors */
+.create {
+    background-color: var(--btn-create);
+}
+.submit {
+    background-color: var(--btn-submit);
+}
+.delete {
+    background-color: var(--btn-delete);
+}
+.cancel {
+    background-color: var(--btn-cancel);
+}
+
+/* Text Colors */
+.muted {
+    color: var(--text-muted);
+}
+/* Card Widgets */
 .card {
     border-color: var(--neutral) !important;
-    box-shadow: 0 0 2px var(--neutral);
+    box-shadow: 0 0 4px var(--neutral);
+    border-radius: 3px;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 1.2em;
+    margin-bottom: 3px;
+}
+
+.card-text {
+    font-size: 0.8em;
+}
+
+.review {
+    margin: 5px;
+    padding: 10px;
+}
+
+.result {
+    margin: 10px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+    transition: filter 0.2s;
+}
+
+.result img {
+    max-width: 200px;
+}
+.alert {
+    color: var(--text-light);
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.alert button {
+    border: none;
+}
+.alert-success {
+    background-color: rgb(3, 117, 74);
+}
+
+.alert-danger {
+    background-color: rgb(126, 6, 6);
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    max-width: 100%;
+  }
+.modal button {
+    display: block;
+}
+.modal-content {
+    padding: 20px;
+}
+
+.modal-header  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2em;
+}
+
+.modal-title {
+    display:inline;
+    text-emphasis: left;
+    margin-right: auto;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+.fade {}
+.show {
+    visibility: visible;
 }
