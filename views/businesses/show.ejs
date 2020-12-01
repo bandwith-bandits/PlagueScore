@@ -30,26 +30,60 @@
 							</button>
 							</div>
 							<div class="modal-body">
-								<h2>Leave a Review</h2>
 								<form action="/businesses/<%=business._id%>/reviews" method="POST" class="mb-3">
 									<!-- <div class="mb-3">
 										<label class="form-label" for="rating">Rating</label>
 										<input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
 									</div> -->
 									<div class="mb-3">
+										<h5>Mask Compliance</h5>
 									<fieldset class="starability-basic">
-									  <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-									  <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+									  <input type="radio" id="no-rate" class="input-no-rate" name="review[rating1]" value="1" checked aria-label="No rating." />
+									  <input type="radio" id="first-rate1" name="review[rating1]" value="1" />
 									  <label for="first-rate1" title="Terrible">1 star</label>
-									  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+									  <input type="radio" id="first-rate2" name="review[rating1]" value="2" />
 									  <label for="first-rate2" title="Not good">2 stars</label>
-									  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+									  <input type="radio" id="first-rate3" name="review[rating1]" value="3" />
 									  <label for="first-rate3" title="Average">3 stars</label>
-									  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+									  <input type="radio" id="first-rate4" name="review[rating1]" value="4" />
 									  <label for="first-rate4" title="Very good">4 stars</label>
-									  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+									  <input type="radio" id="first-rate5" name="review[rating1]" value="5" />
 									  <label for="first-rate5" title="Amazing">5 stars</label>
 									</fieldset>
+									</div>
+									<div class="mb-3">
+										<h5>Social Distancing</h5>
+
+										<fieldset class="starability-basic">
+											<input type="radio" id="no-rate" class="input-no-rate" name="review[rating2]" value="1" checked aria-label="No rating." />
+											<input type="radio" id="second-rate1" name="review[rating2]" value="1" />
+											<label for="second-rate1" title="Terrible">1 star</label>
+											<input type="radio" id="second-rate2" name="review[rating2]" value="2" />
+											<label for="second-rate2" title="Not good">2 stars</label>
+											<input type="radio" id="second-rate3" name="review[rating2]" value="3" />
+											<label for="second-rate3" title="Average">3 stars</label>
+											<input type="radio" id="second-rate4" name="review[rating2]" value="4" />
+											<label for="second-rate4" title="Very good">4 stars</label>
+											<input type="radio" id="second-rate5" name="review[rating2]" value="5" />
+											<label for="second-rate5" title="Amazing">5 stars</label>
+										</fieldset>
+									</div>
+									<div class="mb-3">
+										<h5>Sanitization</h5>
+
+										<fieldset class="starability-basic">
+											<input type="radio" id="no-rate" class="input-no-rate" name="review[rating3]" value="1" checked aria-label="No rating." />
+											<input type="radio" id="thrid-rate1" name="review[rating3]" value="1" />
+											<label for="thrid-rate1" title="Terrible">1 star</label>
+											<input type="radio" id="third-rate2" name="review[rating3]" value="2" />
+											<label for="third-rate2" title="Not good">2 stars</label>
+											<input type="radio" id="third-rate3" name="review[rating3]" value="3" />
+											<label for="third-rate3" title="Average">3 stars</label>
+											<input type="radio" id="third-rate4" name="review[rating3]" value="4" />
+											<label for="third-rate4" title="Very good">4 stars</label>
+											<input type="radio" id="third-rate5" name="review[rating3]" value="5" />
+											<label for="third-rate5" title="Amazing">5 stars</label>
+										</fieldset>
 									</div>
 									<div class="mb-3">
 										<label class="form-label" for="body">Review Text</label>
@@ -58,7 +92,7 @@
 									<button class="btn btn-success">Submit</button>
 								</form>
 							</div>
-							
+
 						</div>
 						</div>
 					</div>
@@ -78,9 +112,15 @@
 			<div class="card mb-3">
 				<div class="card-body">
 				<h5 class="card-title"><%= review.author.username%></h5>
-						<p class="starability-result" data-rating="<%=review.rating%>">
-							Rated: <%= review.rating %> stars
+						<p class="starability-result" data-rating="<%=review.rating1%>">
+							Rated: <%= review.rating1 %> stars
 						</p>
+					<p class="starability-result" data-rating="<%=review.rating2%>">
+						Rated: <%= review.rating2 %> stars
+					</p>
+					<p class="starability-result" data-rating="<%=review.rating3%>">
+						Rated: <%= review.rating3 %> stars
+					</p>
 				<p class="card-text">Review: <%= review.body %></p>
 				<% if( currentUser && review.author.equals(currentUser._id)) {%>
 				<form action="/businesses/<%=business._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
@@ -92,4 +132,5 @@
 		</div>
 		
 	</div
-		
+	</div
+
