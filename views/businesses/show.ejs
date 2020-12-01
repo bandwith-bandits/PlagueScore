@@ -6,13 +6,13 @@
 		<h2 class="business-title"><%= business.title%></h2>
 			<% let avg = 0; 
 				for(let review of business.reviews) { 
-					avg += review.rating 
+					avg += review.rating | 0;
 				} 
 				avg /= business.reviews.length;
 			%>
 		<div class="bussiness-ratings">
-			<p class="starability-result" data-rating="<%=review.rating%>">
-				<%= avg %>
+			<p class="starability-result" data-rating="<%= Math.round(avg) %>">
+				<%= Math.round(avg) %>
 			</p>
 		</div>
 		<div class="business-description muted">
