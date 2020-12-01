@@ -1,8 +1,15 @@
 <div class="review card">
-    <h5 class="card-title"><%= review.author.username%> <img style="width:30px"src="/assets/userIcons/<%=review.author.userIcon%>"></h5>
+    <h5 class="card-title"><%= review.author.username%>
+        <% if (review.author.userIcon !== undefined) { %>
+        <img style="width:30px"src="/assets/userIcons/<%=review.author.userIcon%>"></h5>
+        <%} else {%>
+            <img style="width:30px"src="/assets/user.svg%>"></h5>
+        <%}%>
+            <% if (review.rating !== undefined) { %>
             <p class="starability-result" data-rating="<%=review.rating%>">
                 Rated: <%= review.rating %> stars
             </p>
+            <%}%>
     <p class="card-text">Review: <%= review.body %></p>
     <% if( currentUser && review.author.equals(currentUser._id)) {%>
     <form action="/businesses/<%=business._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">

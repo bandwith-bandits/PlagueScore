@@ -12,10 +12,7 @@ nav {
     font-family: Quicksand, sans;
 }
 
-@media only screen and (max-width: 800px) {
-    nav {flex-direction: column; justify-content: center;}
-    nav div {display: flex; flex-direction: column;justify-content: center;align-items: center;}
-}
+
 nav a {
     color: var(--text-light);
     text-decoration: none;
@@ -26,6 +23,12 @@ nav a {
 nav a:hover {
     color: var(--text-light);
     filter: brightness(0.8);
+}
+.navbar-right {
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    min-width: 280px;
 }
 .navbar-logo {
     font-size: 1.6em;
@@ -51,4 +54,24 @@ nav a:hover {
     width: 40px;
     border-radius: 0 3px 3px 0;
     border:none;
+}
+.profile-icon {
+    margin:0px;
+}
+.profile-icon span {
+    display:inline-block;
+    background-color: rgb(255, 255, 255);
+    border-radius:50%;
+    width: 45px;
+    height: 45px;
+}
+.profile-icon img{
+    width: 35px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+    nav {flex-direction: column; justify-content: center;}
+    nav div {display: flex; flex-direction: column;justify-content: center;align-items: center;}
 }

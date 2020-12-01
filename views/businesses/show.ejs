@@ -3,39 +3,48 @@
 <link rel="stylesheet" href="/stylesheets/stars.css">
 <div class="business-container" id="VueModal">
 	<!-- This is the business name and description-->
-		<div class="picture-gallery">
-			Picture Gallery
+		<h2 class="business-title"><%= business.title%></h2>
+			<% let avg = 0; 
+				for(let review of business.reviews) { 
+					avg += review.rating 
+				} 
+				avg /= business.reviews.length;
+			%>
+		<div class="bussiness-ratings">
+			<p class="starability-result" data-rating="<%=review.rating%>">
+				<%= avg %>
+			</p>
 		</div>
-		<div class="half">
-			<h3><%= business.title%></h3>
-			<p class="muted"><%= business.description%></p>
+		<div class="business-description muted">
+			<%= business.description%>
 		</div>
-
-		<!-- This is the business hours and ratings-->
-		<div class="half info">
+		<div class="business-info">
 			<div>
 				<h4>Hours</h4>
+				<h4>Location</h4>
 				<p class="muted"><%= business.location%></p>
 			</div>
 			<div>
 				<h4>Phone Number</h4>
 			</div>
-		</div>
-		<% if(currentUser){ %>
-			<div class="half">
-				<!-- Button trigger modal -->
-			<button type="button" class="create" v-on:click="toggleVisibility" data-toggle="modal" data-target="#exampleModal">
-				Add Review
-			</button>
-			
-			<% if( currentUser && business.author.equals(currentUser._id)) {%>
-				<a class="" href="/businesses/<%=business._id%>/edit"><button class="submit">Edit</button></a>
-				<form class="d-inline" action="/businesses/<%=business._id%>?_method=DELETE" method="POST">
-					<button class="delete">Delete</button>
-				</form>
+			<% if(currentUser){ %>
+			<div class="business-actions">
+				Actions
+						<!-- Button trigger modal -->
+					<button type="button" class="create" v-on:click="toggleVisibility" data-toggle="modal" data-target="#exampleModal">
+						Add Review
+					</button>
+					
+					<% if( currentUser && business.author.equals(currentUser._id)) {%>
+						<a class="" href="/businesses/<%=business._id%>/edit"><button class="submit">Edit</button></a>
+						<form class="d-inline" action="/businesses/<%=business._id%>?_method=DELETE" method="POST">
+							<button class="delete">Delete</button>
+						</form>
+					<% } %>
+			</div> 
 			<% } %>
-			</div>  
-		<% } %>
+		</div>
+		 
 	<!-- These are the reviews for the business -->
 		<% for(let review of business.reviews) { %>
 			<%- include('../partials/review.ejs', {review, currentUser, business}) %>

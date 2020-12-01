@@ -9,7 +9,7 @@
         <a href="/">Home</a>
         <a href="/businesses">Businesses</a>
       -->
-      <div>
+      <div class="navbar-right">
         <form action="/businesses/search" method="get" class="navbar-search">
           <input type="text" id="title" name="title"></input><button><i class="fas fa-search"></i></button>
         </form>
@@ -17,7 +17,11 @@
           <a href="/login">Login</a>
           <a href="/register">Sign-up</a>
         <% } else {%>
-          <a href="/profile">Profile</a>
+            <% if(currentUser.userIcon) {%>
+              <a href="/profile" class="profile-icon"><span class="profile-icon"><img src="/assets/userIcons/<%=currentUser.userIcon%>"></span></a>
+            <% }  else {%>
+              <a href="/profile" class="profile-icon"><span class="profile-icon"><img src="/assets/user.svg%>"></span></a>
+            <% } %>
         <% } %>
       </div>
 </nav>

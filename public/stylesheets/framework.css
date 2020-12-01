@@ -144,11 +144,13 @@ label {
     font-size: 0.8em;
 }
 
+/* Review Widget */
 .review {
     margin: 5px;
     padding: 10px;
 }
 
+/* Result Widget */
 .result {
     margin: 10px;
     width: 90%;
@@ -162,6 +164,7 @@ label {
 .result img {
     max-width: 200px;
 }
+/* Flash */
 .alert {
     color: var(--text-light);
     margin: 10px;
@@ -181,7 +184,7 @@ label {
 .alert-danger {
     background-color: rgb(126, 6, 6);
 }
-
+/* Modal Widget */
 .modal {
     position: fixed;
     top: 50%;
@@ -213,6 +216,17 @@ label {
 .modal-body {
     display: flex;
     flex-direction: column;
+}
+
+@media only screen and (max-width: 800px) {
+    .review {
+    }
+    .card {
+        border: none;
+        border-top: 1px solid var(--neutral);
+        box-shadow: none;
+        width: 100%;
+    }
 }
 .fade {}
 .show {

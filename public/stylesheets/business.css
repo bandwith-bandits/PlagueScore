@@ -1,29 +1,37 @@
-.business-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.business-reviews div {
-    background-color: var(--secondary-lighter);
-}
-
 .business-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
-.picture-gallery {
-    grid-column: 3/-1;
-    grid-row: 1/4;
+@media only screen and (max-width: 800px) {
+    .business-container {
+       display: flex;
+       flex-direction: column;
+    }
 }
 
-.half {
+.business-title {
+    grid-column: 1/-1;
+    font-size: 3em;
+    padding: 0.2em;
+}
+
+.business-info {
     grid-column: span 2;
+}
+.business-actions {
+    background-color: var(--neutral);
+    filter: brightness(120%);
+    padding: 0.2em;
+    border-radius: 4px;
+    margin: 5px;
 }
 .review {
     margin: 10px;
     align-self: center;
     height: 90%;
-    grid-column: span 2;
+}
+
+.info .starability-result {
+    display: inline-block;
 }
