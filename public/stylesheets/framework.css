@@ -71,6 +71,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Quicksand';
 }
 
+h5, h6 {
+    margin: 2px;
+}
+
 a {
     text-decoration: none;
     color: var(--text-link);
@@ -89,6 +93,10 @@ button {
     font-family: Quicksand;
 } 
 
+button a {
+    color: var(--text-light)
+}
+
 input {
     border: 2px solid var(--neutral);
     border-radius: 4px;
@@ -105,6 +113,11 @@ textarea {
 
 label {
     display: block;
+}
+
+.label-slider{
+    display: flex;
+    font-size: 0.6em;
 }
 /* Button Colors */
 .create {
@@ -142,6 +155,7 @@ label {
 
 .card-text {
     font-size: 0.8em;
+    margin-top: 0.2em;
 }
 
 /* Review Widget */
@@ -217,6 +231,62 @@ label {
     display: flex;
     flex-direction: column;
 }
+/* Make ratings with different icons */
+.starability-template {
+    position: relative;
+    width: 150px;
+    height: 30px;
+    font-size: 0.1em;
+    color: transparent;
+  }
+  
+.starability-template:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    height: 30px;
+    background-position: 0 -30px;
+}
+
+.starability-template[data-rating="5"]::after {
+    width: 150px;
+  }
+  
+  .starability-template[data-rating="4"]::after {
+    width: 120px;
+  }
+  
+  .starability-template[data-rating="3"]::after {
+    width: 90px;
+  }
+  
+  .starability-template[data-rating="2"]::after {
+    width: 60px;
+  }
+  
+  .starability-template[data-rating="1"]::after {
+    width: 30px;
+  }
+  
+  .bacteria {
+    background-image: url("/assets/reviewIcons/bacterium-solid.svg");
+  }
+  .bacteria:after {
+    background-image: url("/assets/reviewIcons/bacterium-solid-yellow.svg");
+  }
+
+  .mask {
+    background-image: url("/assets/reviewIcons/head-side-mask-solid.svg");
+  }
+  .mask:after {
+    background-image: url("/assets/reviewIcons/head-side-mask-solid-yellow.svg");
+  }
+  .spacing {
+    background-image: url("/assets/reviewIcons/arrows-alt-h-solid.svg");
+  }
+  .spacing:after {
+    background-image: url("/assets/reviewIcons/arrows-alt-h-solid-yellow.svg");
+  }
 
 @media only screen and (max-width: 800px) {
     .review {
@@ -229,6 +299,7 @@ label {
     }
 }
 .fade {}
-.show {
-    visibility: visible;
+.blur {
+  filter:opacity(0.5);
+  filter:blur(3px);
 }
