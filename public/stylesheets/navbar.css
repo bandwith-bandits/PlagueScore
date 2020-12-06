@@ -17,13 +17,14 @@ nav a {
     color: var(--text-light);
     text-decoration: none;
     margin: auto 0.8em auto 0.8em;
-    transition: filter 0.1s;
+    transition: filter 0.4s;
 }
 
 nav a:hover {
     color: var(--text-light);
     filter: brightness(0.8);
 }
+
 .navbar-right {
     display:flex;
     align-items:center;

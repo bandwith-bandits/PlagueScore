@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const Review = require('../models/review.js')
-
+const Business = require('../models/business.js')
 module.exports.renderRegister = (req, res) => {
 	res.render('users/register');
 }

@@ -18,10 +18,14 @@
           <a href="/register">Sign-up</a>
         <% } else {%>
             <% if(currentUser.userIcon) {%>
-              <a href="/profile" class="profile-icon"><span class="profile-icon"><img src="/assets/userIcons/<%=currentUser.userIcon%>"></span></a>
+              <div class="profile-hover">
+                <a href="/profile" class="profile-icon"><span class="profile-icon"><img src="/assets/userIcons/<%=currentUser.userIcon%>"></span></a>
+              </div>
             <% }  else {%>
-              <a href="/profile" class="profile-icon"><span class="profile-icon"><img src="/assets/user.svg%>"></span></a>
+              <div class="profile-hover">
+                <a href="/profile" class="profile-icon"><span class="profile-icon"><img src="/assets/user.svg%>"></span></a>
+              </div>
             <% } %>
-        <% } %>
+        <% } %>  
       </div>
 </nav>

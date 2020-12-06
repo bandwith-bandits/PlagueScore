@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="/stylesheets/profile.css">
 <link rel="stylesheet" href="/stylesheets/stars.css">
 <h2>User Profile</h2>
-<a href="/logout"><button class="submit">Logout</button></a>
-<a href="/businesses/new"><button class="create">New Business</button></a>
+<button class="submit"><a href="/logout">Logout</a></button>
+<button class="create"><a href="/businesses/new">New Business</a></button>
 <div id="profileDisplay">
     <!-- Username -->
     <h3>Username</h3>
@@ -29,12 +29,27 @@
     <div class="card review half">
         <div class="card-body">
             <h5 class="card-title"><%= review.author.username%></h5>
-                    <p class="starability-result" data-rating="<%=review.rating%>">
-                        Rated: <%= review.rating %> stars
+            <% if (review.rating !== undefined) { %>
+                <p class="starability-result" data-rating="<%=review.rating%>">
+                    Rated: <%= review.rating %> stars
+                </p>
+                <%}%>
+        
+                <% if (review.ratingCleanliness !== undefined 
+                && review.ratingDistancing !== undefined 
+                && review.ratingMasks !== undefined) { %>
+                    <p class="starability-template mask" data-rating="<%=Math.round(review.ratingMasks / 2)%>" title="<%= review.ratingMasks/2 %>">
+                        Rated: <%= review.ratingMasks/2 %> stars
                     </p>
-            <p class="card-text">Review: <%= review.body %></p>
-            <% if( currentUser && review.author.equals(currentUser._id)) {%>
-            <% } %>
+                    <p class="starability-template bacteria" data-rating="<%=Math.round(review.ratingCleanliness / 2)%>" title="<%= review.ratingCleanliness/2 %>">
+                        Rated: <%= review.ratingMasks/2 %> stars
+                    </p>
+                    <p class="starability-template spacing" data-rating="<%=Math.round(review.ratingDistancing / 2)%>" title="<%= review.ratingDistancing/2 %>">
+                        Rated: <%= review.ratingMasks/2 %> stars
+                    </p>
+                <%}%>
+            <h5><%=review.title%></h5>
+            <p class="card-text"><%= review.body %></p>
         </div>
     </div>
 <% } %>
@@ -46,14 +61,14 @@ const profileDisplay = {
             hasChanged: false,
             user: {
                 _id: "<%= currentUser._id%>",
-                username: "<%= currentUser.ussername%>",
+                username: "<%= currentUser.username%>",
                 email: "<%= currentUser.email%>",
                 userIcon: "<%= currentUser.userIcon%>",
                 __v: 0,
             },
             currentUser: {
                 _id: "<%= currentUser._id%>",
-                username: "<%= currentUser.ussername%>",
+                username: "<%= currentUser.username%>",
                 email: "<%= currentUser.email%>",
                 userIcon: "<%= currentUser.userIcon%>",
                 __v: 0,
