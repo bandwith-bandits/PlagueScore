@@ -3,14 +3,30 @@
         <% if (review.author.userIcon !== undefined) { %>
         <img style="width:30px"src="/assets/userIcons/<%=review.author.userIcon%>"></h5>
         <%} else {%>
-            <img style="width:30px"src="/assets/user.svg%>"></h5>
+            <img style="width:30px"src="/assets/user.svg%>">
         <%}%>
-            <% if (review.rating !== undefined) { %>
-            <p class="starability-result" data-rating="<%=review.rating%>">
-                Rated: <%= review.rating %> stars
+    </h5>
+        <% if (review.rating !== undefined) { %>
+        <p class="starability-result" data-rating="<%=review.rating%>">
+            Rated: <%= review.rating %> stars
+        </p>
+        <%}%>
+
+        <% if (review.rating1 !== undefined 
+        && review.rating2 !== undefined 
+        && review.rating3 !== undefined) { %>
+            <p class="starability-template mask" data-rating="<%=Math.round(review.rating1)%>" title="<%= review.ratingMasks/2 %>">
+                Rated: <%= review.ratingMasks %> stars
             </p>
-            <%}%>
-    <p class="card-text">Review: <%= review.body %></p>
+            <p class="starability-template bacteria" data-rating="<%=Math.round(review.rating3)%>" title="<%= review.ratingCleanliness/2 %>">
+                Rated: <%= review.ratingMasks %> stars
+            </p>
+            <p class="starability-template spacing" data-rating="<%=Math.round(review.rating2)%>" title="<%= review.ratingDistancing/2 %>">
+                Rated: <%= review.ratingMasks %> stars
+            </p>
+        <%}%>
+    <h5> <%= review.title%></h5>
+    <p class="card-text"><%= review.body %></p>
     <% if( currentUser && review.author.equals(currentUser._id)) {%>
     <form action="/businesses/<%=business._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
         <button class="delete">Delete</button>

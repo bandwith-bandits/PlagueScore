@@ -1,18 +1,37 @@
 <% layout('layouts/boilerplate')%>
-<link rel="stylesheet" href="/stylesheets/business.css">
 <link rel="stylesheet" href="/stylesheets/stars.css">
-<div class="business-container" id="VueModal">
+<link rel="stylesheet" href="/stylesheets/business.css">
+<div id="VueModal">
+	<div v-bind:class="containerState">
 	<!-- This is the business name and description-->
 		<h2 class="business-title"><%= business.title%></h2>
-			<% let avg = 0; 
-				for(let review of business.reviews) { 
+			<% let cleanliness = 0;
+				let distancing = 0;
+				let masks = 0;
+				let avg = 0;
+				for(let review of business.reviews) {
+					cleanliness += review.rating3 | 0;
+					distancing += review.rating2 | 0;
+					masks += review.rating1 | 0;
 					avg += review.rating | 0;
 				} 
-				avg /= business.reviews.length;
+				cleanliness = Math.floor(cleanliness / (business.reviews.length));
+				distancing =  Math.floor(distancing / (business.reviews.length));
+				masks =  Math.floor(masks / (business.reviews.length));
+
 			%>
-		<div class="bussiness-ratings">
-			<p class="starability-result" data-rating="<%= Math.round(avg) %>">
+		<div class="business-ratings">
+			<!-- <p class="starability-result" data-rating="<%= Math.round(avg) %>">
 				<%= Math.round(avg) %>
+			</p> -->
+			<p class="starability-template bacteria" data-rating="<%= cleanliness %>">
+				<%= cleanliness %>
+			</p>
+			<p class="starability-template mask" data-rating="<%= masks %>">
+				<%= masks %>
+			</p>
+			<p class="starability-template spacing" data-rating="<%= distancing %>">
+				<%= distancing %>
 			</p>
 		</div>
 		<div class="business-description muted">
@@ -27,9 +46,9 @@
 			<div>
 				<h4>Phone Number</h4>
 			</div>
+			<h3>Reviews</h3>
 			<% if(currentUser){ %>
 			<div class="business-actions">
-				Actions
 						<!-- Button trigger modal -->
 					<button type="button" class="create" v-on:click="toggleVisibility" data-toggle="modal" data-target="#exampleModal">
 						Add Review
@@ -37,64 +56,115 @@
 					
 					<% if( currentUser && business.author.equals(currentUser._id)) {%>
 						<a class="" href="/businesses/<%=business._id%>/edit"><button class="submit">Edit</button></a>
-						<form class="d-inline" action="/businesses/<%=business._id%>?_method=DELETE" method="POST">
+						<form style="display:inline;" action="/businesses/<%=business._id%>?_method=DELETE" method="POST">
 							<button class="delete">Delete</button>
 						</form>
 					<% } %>
 			</div> 
 			<% } %>
 		</div>
-		 
+		
 	<!-- These are the reviews for the business -->
 		<% for(let review of business.reviews) { %>
 			<%- include('../partials/review.ejs', {review, currentUser, business}) %>
 		<% } %>
+	</div>
 
 	<!-- Modal -->
-	<div class="modal card fade" v-if="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Add a Review</h5>
-				<button type="button" class="cancel" v-on:click="toggleVisibility" data-dismiss="modal" aria-label="Close">
-					<i class="fas fa-times"></i>
-				</button>
+	<div class="modal" v-if="show">
+		<div class="modal-header">
+			<h5 class="modal-title" >Add a Review</h5>
+			<button class="cancel" v-on:click="toggleVisibility">
+				<i class="fas fa-times"></i>
+			</button>
 			</div>
-			<div class="modal-body">
-				<h2>Leave a Review</h2>
-				<form action="/businesses/<%=business._id%>/reviews" method="POST" class="mb-3">
-					<label class="form-label" for="rating">Rating</label>
-					<fieldset class="starability-basic">
-					  <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-					  <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-					  <label for="first-rate1" title="Terrible">1 star</label>
-					  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-					  <label for="first-rate2" title="Not good">2 stars</label>
-					  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-					  <label for="first-rate3" title="Average">3 stars</label>
-					  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-					  <label for="first-rate4" title="Very good">4 stars</label>
-					  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-					  <label for="first-rate5" title="Amazing">5 stars</label>
-					</fieldset>
-					<label class="form-label" for="body">Review Text</label>
-					<textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
-					<button class="submit">Submit</button>
-				</form>
+			<div class="modal-content">
+				<div class="modal-body">
+					<form action="/businesses/<%=business._id%>/reviews" method="POST" class="mb-3">
+						<!-- <div class="mb-3">
+							<label class="form-label" for="rating">Rating</label>
+							<input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
+						</div> -->
+						<div>
+							<h5>Mask Compliance</h5>
+						<fieldset class="starability-basic">
+						  <input type="radio" id="no-rate" class="input-no-rate" name="review[rating1]" value="1" checked aria-label="No rating." />
+						  <input type="radio" id="first-rate1" name="review[rating1]" value="1" />
+						  <label for="first-rate1" title="Terrible">1 star</label>
+						  <input type="radio" id="first-rate2" name="review[rating1]" value="2" />
+						  <label for="first-rate2" title="Not good">2 stars</label>
+						  <input type="radio" id="first-rate3" name="review[rating1]" value="3" />
+						  <label for="first-rate3" title="Average">3 stars</label>
+						  <input type="radio" id="first-rate4" name="review[rating1]" value="4" />
+						  <label for="first-rate4" title="Very good">4 stars</label>
+						  <input type="radio" id="first-rate5" name="review[rating1]" value="5" />
+						  <label for="first-rate5" title="Amazing">5 stars</label>
+						</fieldset>
+						</div>
+						<div>
+							<h5>Social Distancing</h5>
+	
+							<fieldset class="starability-basic">
+								<input type="radio" id="no-rate" class="input-no-rate" name="review[rating2]" value="1" checked aria-label="No rating." />
+								<input type="radio" id="second-rate1" name="review[rating2]" value="1" />
+								<label for="second-rate1" title="Terrible">1 star</label>
+								<input type="radio" id="second-rate2" name="review[rating2]" value="2" />
+								<label for="second-rate2" title="Not good">2 stars</label>
+								<input type="radio" id="second-rate3" name="review[rating2]" value="3" />
+								<label for="second-rate3" title="Average">3 stars</label>
+								<input type="radio" id="second-rate4" name="review[rating2]" value="4" />
+								<label for="second-rate4" title="Very good">4 stars</label>
+								<input type="radio" id="second-rate5" name="review[rating2]" value="5" />
+								<label for="second-rate5" title="Amazing">5 stars</label>
+							</fieldset>
+						</div>
+						<div>
+							<h5>Sanitization</h5>
+	
+							<fieldset class="starability-basic">
+								<input type="radio" id="no-rate" class="input-no-rate" name="review[rating3]" value="1" checked aria-label="No rating." />
+								<input type="radio" id="thrid-rate1" name="review[rating3]" value="1" />
+								<label for="thrid-rate1" title="Terrible">1 star</label>
+								<input type="radio" id="third-rate2" name="review[rating3]" value="2" />
+								<label for="third-rate2" title="Not good">2 stars</label>
+								<input type="radio" id="third-rate3" name="review[rating3]" value="3" />
+								<label for="third-rate3" title="Average">3 stars</label>
+								<input type="radio" id="third-rate4" name="review[rating3]" value="4" />
+								<label for="third-rate4" title="Very good">4 stars</label>
+								<input type="radio" id="third-rate5" name="review[rating3]" value="5" />
+								<label for="third-rate5" title="Amazing">5 stars</label>
+							</fieldset>
+						</div>
+						<label >Title</label>
+						<input id="reviewTitle" name="review[title]" type="text">
+						<div>
+							<label class="form-label" for="body">Review Text</label>
+							<textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+						</div>
+						<button class="submit">Submit</button>
+					</form>
+				</div>
+				<button class="cancel" v-on:click="toggleVisibility">Cancel</button>
 			</div>
-			
-		</div>
-		</div>
 	</div>
+
+</div>
 <script>
 		const Modal = {
 		data() {
 			return {
-				show: false
+				show: false,
+				containerState: "business-container"
 			}
 		},
 		methods: {
 			toggleVisibility() {
 				this.show = !this.show;
+				if (this.show) {
+					this.containerState = "business-container blur";
+				} else {
+					this.containerState = "business-container";
+				}
 			}
 		}
 	}
