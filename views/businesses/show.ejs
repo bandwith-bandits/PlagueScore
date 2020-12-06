@@ -111,17 +111,23 @@
 			<% for(let review of business.reviews) { %>
 			<div class="card mb-3">
 				<div class="card-body">
-				<h5 class="card-title"><%= review.author.username%></h5>
+
+					<h7>Social Distancing</h7>
 						<p class="starability-result" data-rating="<%=review.rating1%>">
 							Rated: <%= review.rating1 %> stars
 						</p>
+
+					<h7>Mask Compliance</h7>
 					<p class="starability-result" data-rating="<%=review.rating2%>">
 						Rated: <%= review.rating2 %> stars
 					</p>
+					<h7>Sanitization</h7>
 					<p class="starability-result" data-rating="<%=review.rating3%>">
 						Rated: <%= review.rating3 %> stars
 					</p>
-				<p class="card-text">Review: <%= review.body %></p>
+					<h10 class="card-title"><%= review.author.username%></h10>
+
+					<p class="card-text">Review: <%= review.body %></p>
 				<% if( currentUser && review.author.equals(currentUser._id)) {%>
 				<form action="/businesses/<%=business._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
 					<button class="btn btn-sm btn-danger">Delete</button>
