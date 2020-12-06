@@ -1,4 +1,43 @@
 <link rel="stylesheet" href="/stylesheets/navbar.css">
+<style>
+  .dropdown {
+  display: inline-block;
+  overflow: hidden;
+  z-index: 10;
+}
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: none;  
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: lightgrey;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  right:0;
+  z-index: 10;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  z-index: 10;
+}
+.show {
+  display: block;
+}
+</style>
 <nav>
     <div>
       <a href="/" class="navbar-logo"><span>PlagueScore</span></a>
@@ -18,10 +57,36 @@
           <a href="/register">Sign-up</a>
         <% } else {%>
             <% if(currentUser.userIcon) {%>
-              <a href="/profile" class="profile-icon"><span class="profile-icon"><img src="/assets/userIcons/<%=currentUser.userIcon%>"></span></a>
+              <div class="dropdown">
+                <button class="dropbtn" onclick="myFunction()">
+                  <a class="profile-icon"><span class="profile-icon"><img src="/assets/userIcons/<%=currentUser.userIcon%>"></span></a>
+                </button>
+                <div class="dropdown-content" id="myDropdown">
+                  <a href="/profile">Profile</a>
+                  <a href="/businesses/new">New Business</a>
+                  <a href="/logout">Logout</a>
+                </div>
+                </div> 
+              
             <% }  else {%>
-              <a href="/profile" class="profile-icon"><span class="profile-icon"><img src="/assets/user.svg%>"></span></a>
+              <div class="dropdown">
+                <button class="dropbtn" onclick="myFunction()">
+                  <a class="profile-icon"><span class="profile-icon"><img src="/assets/user.svg%>"></span></a>
+                </button>
+                <div class="dropdown-content" id="myDropdown">
+                  <a href="/profile">Profile</a>
+                  <a href="/businesses/new">New Business</a>
+                  <a href="/logout">Logout</a>
+                </div>
+                </div> 
+              
             <% } %>
         <% } %>
       </div>
 </nav>
+
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+</script>
