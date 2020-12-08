@@ -75,7 +75,7 @@ module.exports.getByName = async (req, res) => {
 		_id: result.place_id,
         title: result.name,
 		location: result.formatted_address,
-		photoreference: result.photos[0].photo_reference,
+		photoreference: (result.photos ? result.photos : [{photo_reference: undefined}])[0].photo_reference,
 		geometry: result.geometry
 	};
 
