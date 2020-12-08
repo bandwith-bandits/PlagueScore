@@ -10,7 +10,7 @@ crossorigin=""/>
 			<%for (let business of businesses){%>
 			<div class="card result">
 						<%if (business.photoReference !== undefined) { %>
-							<img alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photoreference=<%=business.photoreference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
+							<img alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
 						<%} else {%>
 							<img>
 						<%}%>
