@@ -1,4 +1,6 @@
 const Business = require('../models/business');
+const axios = require('axios');
+const mongoose = require('mongoose');
 
 module.exports.index = async (req, res) => {
 	const businesses = await Business.find({});
@@ -18,15 +20,25 @@ module.exports.createBusiness = async(req, res) => {
 }
 
 module.exports.showBusiness = async(req,res,) => {
-	const business = await Business.findById(req.params.id).populate({
+	var business = undefined;
+	business = await Business.findOne({_id: req.params.id}).populate({
 		path: 'reviews',
 		populate: {
 			path: 'author'
 		}
 	}).populate('author');
+	
 	if(!business){
-		req.flash('error', 'Business not found');
-		return res.redirect('/businesses');
+		const data = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${req.params.id}&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg`);
+		if(data.data.status === "INVALID_REQUEST"){
+			
+			req.flash('error', 'Business not found');
+			return res.redirect('/businesses');
+		}	
+ business = new Business({_id: req.params.id,title: data.data.result.name, description: "testing46", author: mongoose.Types.ObjectId("5fb2bc11000e67331457dab8")});
+	await business.save();
+		 	req.flash('success', 'Succesfully made a new business')
+			res.redirect(`/businesses/${business._id}`)
 	}
 	res.render('businesses/show', {business});
 }
@@ -56,7 +68,14 @@ module.exports.destroyBusiness = async (req, res) => {
 
 module.exports.getByName = async (req, res) => {
 	const title = req.query.title;
-	var businesses = await Business.find({title: {$regex: title, $options: "i"}});
+	const data =  await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${title}&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg`);
+	var businesses = data.data.results.map((result) => {
+    return {
+		_id: result.place_id,
+        title: result.name,
+		location: result.formatted_address,
+	}
+})
 	if(!businesses[0]){
 		return res.redirect('/businesses');
 	}	
