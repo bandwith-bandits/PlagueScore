@@ -8,6 +8,9 @@ const BusinessSchema = new Schema({
 	image: String,
 	location: String,
 	description: String,
+	photoReference: String,
+	phoneNumber: String,
+	operationHours: String,
 	author: {
 		type: Schema.Types.ObjectId,
 		ref: 'User'
