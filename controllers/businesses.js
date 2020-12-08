@@ -70,12 +70,16 @@ module.exports.getByName = async (req, res) => {
 	const title = req.query.title;
 	const data =  await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${title}&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg`);
 	var businesses = data.data.results.map((result) => {
-    return {
+     return {
 		_id: result.place_id,
         title: result.name,
 		location: result.formatted_address,
-	}
+		photoreference: result.photos[0].photo_reference
+		
+	};
+
 })
+	
 	if(!businesses[0]){
 		return res.redirect('/businesses');
 	}	
