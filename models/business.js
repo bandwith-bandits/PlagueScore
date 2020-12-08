@@ -3,6 +3,7 @@ const Review = require('./review')
 const Schema = mongoose.Schema;
 
 const BusinessSchema = new Schema({
+	_id: String,
 	title:String,
 	image: String,
 	location: String,
