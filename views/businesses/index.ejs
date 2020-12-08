@@ -13,6 +13,7 @@ crossorigin=""/>
 							<img alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photoreference=<%=business.photoreference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
 						<%} else {%>
 							<img>
+						<%}%>
 						<div class="card-body">
 							<a href="/businesses/<%=business._id%>"><h5 class="card-title"><%= business.title %> </h5></a>
 							<p class="card-text"><%= business.description %></p>
