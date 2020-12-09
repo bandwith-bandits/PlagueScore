@@ -35,7 +35,7 @@ module.exports.showBusiness = async(req,res,) => {
 			req.flash('error', 'Business not found');
 			return res.redirect('/businesses');
 		}	
- business = new Business({_id: req.params.id,title: data.data.result.name, description: "testing46", author: mongoose.Types.ObjectId("5fb2bc11000e67331457dab8")});
+ business = new Business({_id: req.params.id,title: data.data.result.name, photoReference: (data.data.result.photos ? data.data.result.photos : [{photo_reference: undefined}])[0].photo_reference, author: mongoose.Types.ObjectId("5fb2bc11000e67331457dab8")});
 	await business.save();
 		 	req.flash('success', 'Succesfully made a new business')
 			res.redirect(`/businesses/${business._id}`)
@@ -69,15 +69,20 @@ module.exports.destroyBusiness = async (req, res) => {
 module.exports.getByName = async (req, res) => {
 	const title = req.query.title;
 	const data =  await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${title}&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg`);
+	let viewport = data;
 	var businesses = data.data.results.map((result) => {
-    return {
+     return {
 		_id: result.place_id,
         title: result.name,
 		location: result.formatted_address,
-	}
+		photoReference: (result.photos ? result.photos : [{photo_reference: undefined}])[0].photo_reference,
+		geometry: result.geometry
+	};
+
 })
+	
 	if(!businesses[0]){
 		return res.redirect('/businesses');
 	}	
-	res.render('businesses/search', {businesses})
+	res.render('businesses/search', {businesses, viewport})
   };

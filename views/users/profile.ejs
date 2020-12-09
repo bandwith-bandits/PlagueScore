@@ -26,13 +26,21 @@
 <% for (review of userReviews) {%>
     <div class="card review half">
         <div class="card-body">
-            <h5 class="card-title"><%= review.author.username%></h5>
-                    <p class="starability-result" data-rating="<%=review.rating%>">
-                        Rated: <%= review.rating %> stars
-                    </p>
-            <p class="card-text">Review: <%= review.body %></p>
-            <% if( currentUser && review.author.equals(currentUser._id)) {%>
-            <% } %>
+            <h5 class="card-title"><%= review.author.username%></h5>   
+            <% if (review.rating1 !== undefined 
+            && review.rating2 !== undefined 
+            && review.rating3 !== undefined) { %>
+                <p class="starability-template mask" data-rating="<%=Math.round(review.rating1)%>" title="<%= review.ratingMasks/2 %>">
+                    Rated: <%= review.ratingMasks %> stars
+                </p>
+                <p class="starability-template bacteria" data-rating="<%=Math.round(review.rating3)%>" title="<%= review.ratingCleanliness/2 %>">
+                    Rated: <%= review.ratingMasks %> stars
+                </p>
+                <p class="starability-template spacing" data-rating="<%=Math.round(review.rating2)%>" title="<%= review.ratingDistancing/2 %>">
+                    Rated: <%= review.ratingMasks %> stars
+                </p>
+            <%}%>
+            <p class="card-text"><%= review.body %></p>
         </div>
     </div>
 <% } %>

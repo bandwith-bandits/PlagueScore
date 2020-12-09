@@ -14,12 +14,18 @@ crossorigin=""/>
 		</div>
 			<%for (let business of businesses){%>
 			<div class="card result">
-						<img alt="" src="<%=business.image%>">
+						<%if (business.photoReference !== undefined) { %>
+							<img alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
+						<%} else {%>
+							<img>
+						<%}%>
 						<div class="card-body">
 							<a href="/businesses/<%=business._id%>"><h5 class="card-title"><%= business.title %> </h5></a>
 							<p class="card-text"><%= business.description %></p>
 							<p class="card-text">
 								<small class="muted"><%= business.location%></small>
+							</p>
+							<p>
 							</p>
 						</div>
 			</div>
@@ -28,6 +34,46 @@ crossorigin=""/>
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
-	<script src="/javascript/results_map.js"></script>
-		
+	<script>
+		let businesses = [];
+		<%for (let business of businesses){%>
+			console.log("<%= business.title %>")
+			businesses.push({
+				id: "<%= business._id %>",
+				title: "<%= business.title %>",
+				lat: <%= business.geometry.location.lat %>,
+				lng: <%= business.geometry.location.lng %>
+			});
+		<%}%>
+		<%
+		 	let viewport = businesses.reduce(
+				(acc, val)=>{
+					acc.lat += val.geometry.location.lat;
+					acc.lng += val.geometry.location.lng;
+					return acc;
+				},
+				{
+					lat: 0,
+					lng: 0
+				});
+			viewport.lat /= businesses.length;
+			viewport.lng /= businesses.length;
+
+		%>
+	let viewport = [<%=viewport.lat %>,<%=viewport.lng %>];
+	var map = L.map('map').setView(viewport, 13);
+
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      }).addTo(map);
+
+      L.control.scale().addTo(map);
+
+	  // show a marker on the map
+	  businesses.forEach(business => L.marker({lat: business.lat, lng: business.lng})
+										.bindPopup(`<a href="/businesses/${business.id}">${business.title}</a>`)
+										.addTo(map));
+
+	</script>
 		
