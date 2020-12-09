@@ -11,15 +11,16 @@
 }
 
 .business-title {
-    grid-column: 1/-1;
+    grid-column: span 1;
     font-size: 3em;
     padding: 0.2em;
 }
 .business-description {
-    grid-column: span 3;
+    grid-column: span 1;
 }
 .business-info {
-    grid-column: 1/-1;
+    grid-column: span 2;
+	
 }
 .business-actions {
     background-color: var(--neutral);
@@ -38,4 +39,14 @@
 
 .info .starability-result {
     display: inline-block;
+}
+
+.business-ratings {
+	grid-column: span 3;
+	justify-self : start;
+	align-self: center;
+}
+
+.business-image {
+	grid-column : span 1;
 }
