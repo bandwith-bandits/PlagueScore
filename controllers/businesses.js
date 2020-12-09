@@ -15,7 +15,6 @@ module.exports.createBusiness = async(req, res) => {
 	const business = new Business(req.body.business);
 	business.author = req.user._id;
 	await business.save();
-	req.flash('success', 'Succesfully made a new business')
 	res.redirect(`/businesses/${business._id}`)
 }
 
@@ -38,7 +37,7 @@ module.exports.showBusiness = async(req,res,) => {
  business = new Business({_id: req.params.id,title: data.data.result.name, operationHours: data.data.result.opening_hours ? data.data.result.opening_hours.weekday_text : undefined , location: data.data.result.formatted_address, phoneNumber: data.data.result.formatted_phone_number, photoReference: (data.data.result.photos ? data.data.result.photos : [{photo_reference: undefined}])[0].photo_reference, author: mongoose.Types.ObjectId("5fb2bc11000e67331457dab8")});
 
 	await business.save();
-		 	req.flash('success', 'Succesfully made a new business')
+		 	
 			res.redirect(`/businesses/${business._id}`)
 	}
 	res.render('businesses/show', {business});
@@ -56,14 +55,14 @@ module.exports.renderEditForm = async(req,res,) => {
 module.exports.updateBusiness = async (req,res) => {
 	const { id } = req.params;
 	const business = await Business.findByIdAndUpdate(id, { ...req.body.business });
-	req.flash('success', 'Succesfully updated business')
+	req.flash('success', 'Successfully updated business')
 	res.redirect(`/businesses/${business._id}`)
 }
 
 module.exports.destroyBusiness = async (req, res) => {
 	const { id } = req.params;
 	await Business.findByIdAndDelete(id);
-	req.flash('success', 'Succesfully deleted business')
+	req.flash('success', 'Successfully deleted business')
 	res.redirect(`/businesses`);
 }
 
