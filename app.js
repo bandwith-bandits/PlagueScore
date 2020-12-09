@@ -17,6 +17,14 @@ const userRoutes = require('./routes/users');
 const businessesRoutes = require('./routes/businesses');
 const reviewsRoutes = require('./routes/reviews');
 
+
+const createMail = require('./createMail.js');
+
+
+
+createMail;
+
+
 const link = config.db.uri;
 mongoose.connect(link, {
 	useNewUrlParser: true,
@@ -77,7 +85,7 @@ app.use('/businesses', businessesRoutes)
 app.use('/businesses/:id/reviews', reviewsRoutes)
 
 app.get('/', (req, res) => {
-	res.render('home')
+	res.render('home.ejs')
 });
 
 
@@ -87,3 +95,10 @@ app.get('/', (req, res) => {
 app.listen(3000, () =>{
 	console.log('Server started')
 })
+
+
+
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');

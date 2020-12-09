@@ -12,8 +12,31 @@ const UserSchema = new Schema({
 		type: String,
 		required: true,
 		unique: true
+	},
+
+	resetPasswordToken: {
+		type: String,
+		required: false,
+
+	},
+
+	resetPasswordExp: {
+		type: Date,
+		required: false,
+
 	}
+
+
+
 });
+
+
+
+UserSchema.methods.generatePasswordReset = function() {
+	this.resetPasswordToken = crypto.randomBytes(20).toString('hex');
+	this.resetPasswordToken = Date.now();
+}
+
 
 UserSchema.plugin(passportLocalMongoose); //this plugin adds username, password, and makes sure usernames are unique
 
