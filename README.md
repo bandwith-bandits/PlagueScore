@@ -1,7 +1,11 @@
 ## Getting Started
-This repository aims to assist you in beginning work on a MERN stack application for heroku deployment with a solid file structure as a foundation. To get started make a copy of this template repo for your project teams by clicking the green "Use this template" button above.
+This app is using the MEEVN stack (Mongoose, Express, Ejs, Vue, Node). Before running locally, run `npm install` to install all the packages needed to run the application.
 
-Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. From now on run this command anytime you want to install all modules again. This is a script we have defined in package.json. Alternatively your group may choose to simplify this process by using yarn workspaces as specified [here](https://yarnpkg.com/lang/en/docs/workspaces/).
+The frontend part of the application is contained in the views directory. The layout/boilerplate.ejs imports vue.js, fonts from google fonts, and framework.css. Framework.css is defined in `public/stylesheets/framework.css`, it contains styling for all the websites components.
+
+In `config/config.js`, the path to the database can be defined. This allows for setting your own database link.
+
+Our passwords and users are handled by a library called passport.js. This salts and hashes the passwords, helping to protect users accounts from being stolen.
 
 This app can be deployed directly to heroku since there is a script defined in package.json which will automatically handle building and deploying the app. For more information on deploying to heroku reference the extra resources at the bottom of this file. 
 
@@ -22,10 +26,10 @@ This app can be deployed directly to heroku since there is a script defined in p
 - #### `package.json` - Defines npm behaviors like the scripts defined in the next section of the README
 - #### `.gitignore` - Tells git which files to ignore
 - #### `README` - This file!
-
+- ### `views` - contains the frontend ui
 ## Learn More
-To learn how to setup a local MongoDB instance for testing, check out how to [connect to MongoDB](https://docs.mongodb.com/guides/server/drivers/).
-
-To learn how to deploy a full-stack web app to heroku, check out [this great guide](https://daveceddia.com/deploy-react-express-app-heroku/).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Mongoose](https://mongoosejs.com/docs/api.html)\
+[Passport](http://www.passportjs.org/docs/)\
+[Ejs](https://ejs.co/#docs)\
+[Vue.js](https://vuejs.org/v2/guide/)\
+[Express](http://expressjs.com/)
