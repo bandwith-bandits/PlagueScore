@@ -2,6 +2,10 @@ const Business = require('../models/business');
 const axios = require('axios');
 const mongoose = require('mongoose');
 
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+ }
+
 module.exports.index = async (req, res) => {
 	const businesses = await Business.find({});
 	res.render('businesses/index', {businesses})
@@ -18,7 +22,7 @@ module.exports.createBusiness = async(req, res) => {
 	res.redirect(`/businesses/${business._id}`)
 }
 
-module.exports.showBusiness = async(req,res,) => {
+module.exports.showBusiness = async(req,res) => {
 	var business = undefined;
 	business = await Business.findOne({_id: req.params.id}).populate({
 		path: 'reviews',
@@ -37,8 +41,7 @@ module.exports.showBusiness = async(req,res,) => {
  business = new Business({_id: req.params.id,title: data.data.result.name, operationHours: data.data.result.opening_hours ? data.data.result.opening_hours.weekday_text : undefined , location: data.data.result.formatted_address, phoneNumber: data.data.result.formatted_phone_number, photoReference: (data.data.result.photos ? data.data.result.photos : [{photo_reference: undefined}])[0].photo_reference, author: mongoose.Types.ObjectId("5fb2bc11000e67331457dab8")});
 
 	await business.save();
-		 	
-			res.redirect(`/businesses/${business._id}`)
+	return res.redirect(`/businesses/${business._id}`);
 	}
 	res.render('businesses/show', {business});
 }
