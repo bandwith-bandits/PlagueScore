@@ -11,9 +11,12 @@
 }
 
 .business-title {
-    grid-column: span 1;
+    grid-column: 1/2 ;
     font-size: 3em;
     padding: 0.2em;
+}
+.business-ratings {
+    grid-column: span 3;
 }
 .business-description {
     grid-column: span 1;
@@ -48,5 +51,8 @@
 }
 
 .business-image {
-	grid-column : span 1;
+    grid-column : span 1;
+}
+.full {
+    grid-column: 1/-1;
 }

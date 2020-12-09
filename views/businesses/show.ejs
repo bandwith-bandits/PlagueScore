@@ -5,6 +5,14 @@
 	<div v-bind:class="containerState">
 	<!-- This is the business name and description-->
 		<h2 class="business-title"><%= business.title%></h2>
+<<<<<<< Updated upstream
+=======
+		<%if (business.photoReference !== undefined) { %>
+			<img alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
+		<%} else {%>
+			<img>
+		<%}%>
+>>>>>>> Stashed changes
 			<% let cleanliness = 0;
 				let distancing = 0;
 				let masks = 0;
@@ -21,6 +29,10 @@
 
 			%>
 		<div class="business-ratings">
+			<h4>Description</h4>
+			<p>
+				<%= business.description%>
+			</p>
 			<!-- <p class="starability-result" data-rating="<%= Math.round(avg) %>">
 				<%= Math.round(avg) %>
 			</p> -->
@@ -34,6 +46,7 @@
 				<%= distancing %>
 			</p>
 		</div>
+<<<<<<< Updated upstream
 		<%if (business.photoReference !== undefined) { %>
 							<img class ="business-image" alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&maxheight=600&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
 						<%} else {%>
@@ -44,6 +57,8 @@
 		<div class="business-description muted">
 			<%= business.description%>
 		</div>
+=======
+>>>>>>> Stashed changes
 		<div class="business-info">
 			<div>
 				<h4>Description</h4>
@@ -51,13 +66,18 @@
 				<h4>Location</h4>
 				<p class="muted"><%= business.location%></p>
 			</div>
+		</div>
 			<div>
 				<h4>Phone Number</h4>
 			</div>
+<<<<<<< Updated upstream
 				</div>
 			<h3>Reviews</h3>
 
 
+=======
+			<h3 class="full">Reviews</h3>
+>>>>>>> Stashed changes
 			<% if(currentUser){ %>
 			<div class="business-actions">
 						<!-- Button trigger modal -->
@@ -73,6 +93,11 @@
 					<% } %>
 			</div> 
 			<% } %>
+<<<<<<< Updated upstream
+=======
+		
+		
+>>>>>>> Stashed changes
 	<!-- These are the reviews for the business -->
 		<% for(let review of business.reviews) { %>
 			<%- include('../partials/review.ejs', {review, currentUser, business}) %>
