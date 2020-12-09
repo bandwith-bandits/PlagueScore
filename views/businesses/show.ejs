@@ -5,6 +5,11 @@
 	<div v-bind:class="containerState">
 	<!-- This is the business name and description-->
 		<h2 class="business-title"><%= business.title%></h2>
+		<%if (business.photoReference !== undefined) { %>
+							<img alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
+						<%} else {%>
+							<img>
+						<%}%>
 			<% let cleanliness = 0;
 				let distancing = 0;
 				let masks = 0;
