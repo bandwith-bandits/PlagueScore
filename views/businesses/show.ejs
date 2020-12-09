@@ -50,6 +50,18 @@ masks =  Math.floor(masks / (business.reviews.length));
 				<%}%>
 				<h4>Phone Number</h4>
 					<p class="muted"><%=business.phoneNumber%></p>
+				<%if (business.operationHours) {%>
+				<h4>Operating Hours</h4>
+						<p class="muted"><%= business.operationHours[0]%></p>
+						<p class="muted"><%= business.operationHours[1]%></p>
+						<p class="muted"><%= business.operationHours[2]%></p>
+						<p class="muted"><%= business.operationHours[3]%></p>
+						<p class="muted"><%= business.operationHours[4]%></p>
+						<p class="muted"><%= business.operationHours[5]%></p>
+						<p class="muted"><%= business.operationHours[6]%></p>
+				<%}%>
+						
+				
 		</div>
 			<h3 class="full">Reviews</h3>
 			<% if(currentUser){ %>
