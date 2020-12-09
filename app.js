@@ -19,6 +19,7 @@ const reviewsRoutes = require('./routes/reviews');
 
 
 const createMail = require('./createMail.js');
+const {recover} = require("./controllers/password");
 
 
 
@@ -85,7 +86,7 @@ app.use('/businesses', businessesRoutes)
 app.use('/businesses/:id/reviews', reviewsRoutes)
 
 app.get('/', (req, res) => {
-	res.render('home.ejs')
+	res.render('home')
 });
 
 
@@ -97,8 +98,3 @@ app.listen(3000, () =>{
 })
 
 
-
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');

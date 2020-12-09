@@ -22,6 +22,11 @@
     </div>
     
 </div>
+
+<div>
+    <button  v-on:click="changePassword" class="submit">Change Password</button>
+</div>
+
 <h3>Reviews</h3>
 <% for (review of userReviews) {%>
     <div class="card review half">
@@ -36,6 +41,8 @@
         </div>
     </div>
 <% } %>
+
+
 <script>
 const profileDisplay = {
     data() {
@@ -88,6 +95,18 @@ const profileDisplay = {
                 .get("/profile/newIcon")
                 .then(res => (this.user.userIcon = res.data.icon))
                 .catch(err => {this.user.userIcon = ""; console.log(err);});
+        },
+        changePassword(){
+            User.findOne({ username: req.user.username })
+                .then((u) => {
+                    u.setPassword(req.body.newPassword,(err, u) => {
+                        if (err) return next(err);
+                        u.save();
+                        res.status(200).json({ message: 'password change successful' });
+                    });
+
+                })
+
         }
     },
     computed: {

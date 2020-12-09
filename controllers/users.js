@@ -22,7 +22,7 @@ module.exports.register = async (req, res) => {
 }
 
 module.exports.renderLogin = (req, res) => {
-	res.render('users/login');
+	res.render('users/login.ejs');
 }
 
 module.exports.login = (req, res) => {
