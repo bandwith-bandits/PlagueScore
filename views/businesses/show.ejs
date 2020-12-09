@@ -1,38 +1,25 @@
 <% layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/stars.css">
 <link rel="stylesheet" href="/stylesheets/business.css">
+<% let cleanliness = 0;
+let distancing = 0;
+let masks = 0;
+let avg = 0;
+for(let review of business.reviews) {
+	cleanliness += review.rating3 | 0;
+	distancing += review.rating2 | 0;
+	masks += review.rating1 | 0;
+	avg += review.rating | 0;
+} 
+cleanliness = Math.floor(cleanliness / (business.reviews.length));
+distancing =  Math.floor(distancing / (business.reviews.length));
+masks =  Math.floor(masks / (business.reviews.length));
+%>
 <div id="VueModal">
 	<div v-bind:class="containerState">
 	<!-- This is the business name and description-->
 		<h2 class="business-title"><%= business.title%></h2>
-<<<<<<< Updated upstream
-=======
-		<%if (business.photoReference !== undefined) { %>
-			<img alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
-		<%} else {%>
-			<img>
-		<%}%>
->>>>>>> Stashed changes
-			<% let cleanliness = 0;
-				let distancing = 0;
-				let masks = 0;
-				let avg = 0;
-				for(let review of business.reviews) {
-					cleanliness += review.rating3 | 0;
-					distancing += review.rating2 | 0;
-					masks += review.rating1 | 0;
-					avg += review.rating | 0;
-				} 
-				cleanliness = Math.floor(cleanliness / (business.reviews.length));
-				distancing =  Math.floor(distancing / (business.reviews.length));
-				masks =  Math.floor(masks / (business.reviews.length));
-
-			%>
 		<div class="business-ratings">
-			<h4>Description</h4>
-			<p>
-				<%= business.description%>
-			</p>
 			<!-- <p class="starability-result" data-rating="<%= Math.round(avg) %>">
 				<%= Math.round(avg) %>
 			</p> -->
@@ -46,38 +33,25 @@
 				<%= distancing %>
 			</p>
 		</div>
-<<<<<<< Updated upstream
 		<%if (business.photoReference !== undefined) { %>
-							<img class ="business-image" alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&maxheight=600&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
-						<%} else {%>
-							<img>
-						<%}%>
-
-
-		<div class="business-description muted">
-			<%= business.description%>
-		</div>
-=======
->>>>>>> Stashed changes
+			<img class="business-img" alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
+		<%} else {%>
+			<h5>No image for this site!</h5>
+		<%}%>
+		
 		<div class="business-info">
-			<div>
 				<h4>Description</h4>
-				<h4>Hours</h4>
+				<%= business.description%>
 				<h4>Location</h4>
-				<p class="muted"><%= business.location%></p>
-			</div>
-		</div>
-			<div>
+				<%if (business.location) {%>
+					<p class="muted"><%= business.location%></p>
+				<% } else { %> 
+					<p class="muted">No location for this business!</p>
+				<%}%>
 				<h4>Phone Number</h4>
-			</div>
-<<<<<<< Updated upstream
-				</div>
-			<h3>Reviews</h3>
-
-
-=======
+					<p class="muted"><%=business.phoneNumber%></p>
+		</div>
 			<h3 class="full">Reviews</h3>
->>>>>>> Stashed changes
 			<% if(currentUser){ %>
 			<div class="business-actions">
 						<!-- Button trigger modal -->
@@ -93,11 +67,6 @@
 					<% } %>
 			</div> 
 			<% } %>
-<<<<<<< Updated upstream
-=======
-		
-		
->>>>>>> Stashed changes
 	<!-- These are the reviews for the business -->
 		<% for(let review of business.reviews) { %>
 			<%- include('../partials/review.ejs', {review, currentUser, business}) %>
