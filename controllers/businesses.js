@@ -35,7 +35,7 @@ module.exports.showBusiness = async(req,res,) => {
 			req.flash('error', 'Business not found');
 			return res.redirect('/businesses');
 		}	
- business = new Business({_id: req.params.id,title: data.data.result.name, photoReference: (data.data.result.photos ? data.data.result.photos : [{photo_reference: undefined}])[0].photo_reference, author: mongoose.Types.ObjectId("5fb2bc11000e67331457dab8")});
+ business = new Business({_id: req.params.id,title: data.data.result.name, location: data.data.result.formatted_address, photoReference: (data.data.result.photos ? data.data.result.photos : [{photo_reference: undefined}])[0].photo_reference, author: mongoose.Types.ObjectId("5fb2bc11000e67331457dab8")});
 	await business.save();
 		 	req.flash('success', 'Succesfully made a new business')
 			res.redirect(`/businesses/${business._id}`)
