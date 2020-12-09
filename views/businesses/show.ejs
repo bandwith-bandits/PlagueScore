@@ -5,11 +5,6 @@
 	<div v-bind:class="containerState">
 	<!-- This is the business name and description-->
 		<h2 class="business-title"><%= business.title%></h2>
-		<%if (business.photoReference !== undefined) { %>
-							<img alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&maxheight=200&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
-						<%} else {%>
-							<img>
-						<%}%>
 			<% let cleanliness = 0;
 				let distancing = 0;
 				let masks = 0;
@@ -39,11 +34,19 @@
 				<%= distancing %>
 			</p>
 		</div>
+		<%if (business.photoReference !== undefined) { %>
+							<img class ="business-image" alt="" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&maxheight=600&photoreference=<%=business.photoReference%>&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg">
+						<%} else {%>
+							<img>
+						<%}%>
+
+
 		<div class="business-description muted">
 			<%= business.description%>
 		</div>
 		<div class="business-info">
 			<div>
+				<h4>Description</h4>
 				<h4>Hours</h4>
 				<h4>Location</h4>
 				<p class="muted"><%= business.location%></p>
@@ -51,7 +54,10 @@
 			<div>
 				<h4>Phone Number</h4>
 			</div>
+				</div>
 			<h3>Reviews</h3>
+
+
 			<% if(currentUser){ %>
 			<div class="business-actions">
 						<!-- Button trigger modal -->
@@ -67,8 +73,6 @@
 					<% } %>
 			</div> 
 			<% } %>
-		</div>
-		
 	<!-- These are the reviews for the business -->
 		<% for(let review of business.reviews) { %>
 			<%- include('../partials/review.ejs', {review, currentUser, business}) %>
