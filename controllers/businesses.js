@@ -32,7 +32,7 @@ module.exports.showBusiness = async(req,res) => {
 	}).populate('author');
 	
 	if(!business){
-		const data = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${req.params.id}&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg`);
+		const data = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${req.params.id}&key=`);
 		if(data.data.status === "INVALID_REQUEST"){
 			
 			req.flash('error', 'Business not found');
@@ -71,7 +71,7 @@ module.exports.destroyBusiness = async (req, res) => {
 
 module.exports.getByName = async (req, res) => {
 	const title = req.query.title;
-	const data =  await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${title}&key=AIzaSyDmzfvm2aV1kezXVPpmPZRWp-qpoeUHkpg`);
+	const data =  await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${title}&key=`);
 	let viewport = data;
 	var businesses = data.data.results.map((result) => {
      return {
